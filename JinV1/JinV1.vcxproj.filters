@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="ソース ファイル">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="ヘッダー ファイル">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="リソース ファイル">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="JNI">
+      <UniqueIdentifier>{cbe24ff9-4ac7-44f1-b129-5094ec94cc36}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\impl">
+      <UniqueIdentifier>{49f0b9f4-4950-4fdf-b419-8e581f9bf539}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\impl">
+      <UniqueIdentifier>{c4148b3b-6879-4b81-87f2-fd6a234eb389}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\impl\net/minecraft/client/">
+      <UniqueIdentifier>{b99996ed-b736-4975-bc78-6ddc691e4bba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\impl\net/minecraft/client/">
+      <UniqueIdentifier>{06001382-bcf0-456d-8222-81b86dd04ffc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\utils">
+      <UniqueIdentifier>{f468c6b6-6691-4301-844b-441cc2e08b41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\utils">
+      <UniqueIdentifier>{a9c33828-8164-4b46-b92f-6704bd7f4a34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\impl\net/minecraft/client/entity/">
+      <UniqueIdentifier>{5b8eb1aa-50b3-4f4c-b27b-d98c38455604}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\impl\net/minecraft/client/entity/">
+      <UniqueIdentifier>{86fdae69-dff9-439b-971e-facfb7d40a27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\impl\net/minecraft/client/gui/">
+      <UniqueIdentifier>{61aac928-e65c-412d-8d32-277062383747}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\impl\net/minecraft/client/gui/">
+      <UniqueIdentifier>{ae77108b-370a-429b-82a6-659944d714c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\rdi">
+      <UniqueIdentifier>{d046e76b-d8df-4f72-8c45-f9fcd92570d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\rdi">
+      <UniqueIdentifier>{12949a6f-d473-4ac3-b836-9effb057aa50}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\modules">
+      <UniqueIdentifier>{9adf9df2-edcb-41ed-8cd1-7763108778a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\modules">
+      <UniqueIdentifier>{e91aa064-72c3-4bb1-b2dc-1367fd32298a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="JNI\classfile_constants.h">
+      <Filter>JNI</Filter>
+    </ClInclude>
+    <ClInclude Include="JNI\jawt.h">
+      <Filter>JNI</Filter>
+    </ClInclude>
+    <ClInclude Include="JNI\jawt_md.h">
+      <Filter>JNI</Filter>
+    </ClInclude>
+    <ClInclude Include="JNI\jdwpTransport.h">
+      <Filter>JNI</Filter>
+    </ClInclude>
+    <ClInclude Include="JNI\jni.h">
+      <Filter>JNI</Filter>
+    </ClInclude>
+    <ClInclude Include="JNI\jvmti.h">
+      <Filter>JNI</Filter>
+    </ClInclude>
+    <ClInclude Include="JNI\jvmticmlr.h">
+      <Filter>JNI</Filter>
+    </ClInclude>
+    <ClInclude Include="Core.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="impl\net\minecraft\client\Minecraft.h">
+      <Filter>ヘッダー ファイル\impl\net/minecraft/client/</Filter>
+    </ClInclude>
+    <ClInclude Include="JNI\jni_md.h">
+      <Filter>JNI</Filter>
+    </ClInclude>
+    <ClInclude Include="impl\ImplClass.h">
+      <Filter>ヘッダー ファイル\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="impl\net\minecraft\client\entity\EntityPlayerSP.h">
+      <Filter>ヘッダー ファイル\impl\net/minecraft/client/entity/</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\Vector3.h">
+      <Filter>ヘッダー ファイル\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="impl\net\minecraft\client\gui\FontRenderer.h">
+      <Filter>ヘッダー ファイル\impl\net/minecraft/client/gui/</Filter>
+    </ClInclude>
+    <ClInclude Include="rdi\ReflectiveDLLInjection.h">
+      <Filter>ヘッダー ファイル\rdi</Filter>
+    </ClInclude>
+    <ClInclude Include="rdi\ReflectiveLoader.h">
+      <Filter>ヘッダー ファイル\rdi</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\ProcessUtils.h">
+      <Filter>ヘッダー ファイル\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="modules\Module.h">
+      <Filter>ヘッダー ファイル\modules</Filter>
+    </ClInclude>
+    <ClInclude Include="modules\FastPlace.h">
+      <Filter>ヘッダー ファイル\modules</Filter>
+    </ClInclude>
+    <ClInclude Include="modules\ModuleManager.h">
+      <Filter>ヘッダー ファイル\modules</Filter>
+    </ClInclude>
+    <ClInclude Include="modules\ModuleId.h">
+      <Filter>ヘッダー ファイル\modules</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Core.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="impl\net\minecraft\client\Minecraft.cpp">
+      <Filter>ソース ファイル\impl\net/minecraft/client/</Filter>
+    </ClCompile>
+    <ClCompile Include="impl\net\minecraft\client\entity\EntityPlayerSP.cpp">
+      <Filter>ソース ファイル\impl\net/minecraft/client/entity/</Filter>
+    </ClCompile>
+    <ClCompile Include="utils\Vector3.cpp">
+      <Filter>ソース ファイル\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="impl\net\minecraft\client\gui\FontRenderer.cpp">
+      <Filter>ソース ファイル\impl\net/minecraft/client/gui/</Filter>
+    </ClCompile>
+    <ClCompile Include="rdi\ReflectiveLoader.cpp">
+      <Filter>ソース ファイル\rdi</Filter>
+    </ClCompile>
+    <ClCompile Include="utils\ProcessUtils.cpp">
+      <Filter>ソース ファイル\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="modules\Module.cpp">
+      <Filter>ソース ファイル\modules</Filter>
+    </ClCompile>
+    <ClCompile Include="modules\FastPlace.cpp">
+      <Filter>ソース ファイル\modules</Filter>
+    </ClCompile>
+    <ClCompile Include="modules\ModuleManager.cpp">
+      <Filter>ソース ファイル\modules</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
