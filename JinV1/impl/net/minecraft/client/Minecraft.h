@@ -2,6 +2,7 @@
 #include "../../../ImplClass.h"
 #include "entity/EntityPlayerSP.h"
 #include "gui/FontRenderer.h"
+#include "settings/GameSettings.h"
 
 class Minecraft : public ImplClass {
 public:
@@ -12,6 +13,8 @@ public:
     EntityPlayerSP* getPlayer();
 
     FontRenderer* getFontRenderer();
+
+    GameSettings* getGameSettings();
 
     void setRightClickDelayTimer(jint);
 
@@ -26,4 +29,5 @@ private:
     jfieldID fdPlayer;
     jfieldID fdFontRendererObj;
     jfieldID fdObjectMouseOver;
+    jfieldID fdGameSettings;
 };

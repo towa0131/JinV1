@@ -8,6 +8,7 @@ Minecraft::Minecraft(Core* core) : ImplClass(core, "net.minecraft.client.Minecra
     fdPlayer = getFieldID("field_71439_g", "Lnet/minecraft/client/entity/EntityPlayerSP;");
     fdFontRendererObj = getFieldID("field_71466_p", "Lnet/minecraft/client/gui/FontRenderer;");
     fdObjectMouseOver = getFieldID("field_71476_x", "Lnet/minecraft/util/MovingObjectPosition;");
+    fdGameSettings = getFieldID("field_71474_y", "Lnet/minecraft/client/settings/GameSettings;");
 }
 
 jobject Minecraft::getMinecraft() {
@@ -23,6 +24,11 @@ EntityPlayerSP* Minecraft::getPlayer() {
 FontRenderer* Minecraft::getFontRenderer() {
     jobject fontRenderer = getObject(getMinecraft(), fdFontRendererObj);
     return new FontRenderer(this->core, fontRenderer);
+}
+
+GameSettings* Minecraft::getGameSettings() {
+    jobject gameSettings = getObject(getMinecraft(), fdGameSettings);
+    return new GameSettings(this->core, gameSettings);
 }
 
 jobject Minecraft::getObjectMouseOver() {

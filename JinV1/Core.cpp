@@ -3,6 +3,7 @@
 #include <cmath>
 #include "Core.h"
 #include "modules/AutoClicker.h"
+#include "modules/InventoryWalk.h"
 #include "modules/ModuleManager.h"
 #include "modules/FastPlace.h"
 #include "modules/HitDelayFix.h"
@@ -10,6 +11,7 @@
 #include "modules/Speed.h"
 #include "utils/ProcessUtils.h"
 #include "impl/net/minecraft/client/Minecraft.h"
+#include "impl/net/minecraft/client/settings/KeyBinding.h"
 
 #ifndef M_PI
 #define M_PI 3.14159265358979
@@ -22,6 +24,7 @@ void Core::run() {
     this->moduleManager = new ModuleManager();
 
     this->getModuleManager()->registerModule(new FastPlace(this, "FastPlace", 'P', true));
+    this->getModuleManager()->registerModule(new InventoryWalk(this, "InventoryWalk", 'I', true));
     this->getModuleManager()->registerModule(new HitDelayFix(this, "HitDelayFix", 'H', true));
     this->getModuleManager()->registerModule(new KeepSprint(this, "KeepSprint", 'K', true));
     this->getModuleManager()->registerModule(new AutoClicker(this, "AutoClicker", 'B', false));
@@ -30,11 +33,10 @@ void Core::run() {
 
     Minecraft* mc = new Minecraft(this);
     EntityPlayerSP* player = mc->getPlayer();
+    KeyBinding* key = mc->getGameSettings()->getKeyBindForward();
 
     while (this->running) {
         this->getModuleManager()->update();
-        // key->test();
-
 
         //jobject mouseOver = mc->getObjectMouseOver();
         //if (mouseOver == NULL) {
@@ -59,47 +61,6 @@ void Core::run() {
         //        }
         //    }
         //}
-
-        //std::cout << "yaw : " << player->getYaw() << std::endl;
-        //std::cout << "cos(yaw) : " << cos(deg_to_rad(player->getYaw())) << std::endl;
-        //std::cout << "sin(yaw) : " << sin(deg_to_rad(player->getYaw())) << std::endl;
-        /*
-
-        double motionX = 0;
-        double motionY = 0;
-        double motionZ = 0;
-        double p = 1.5;
-
-        if ((GetAsyncKeyState('W') & 0xff00) != 0 ) {
-            motionX += -sin(deg_to_rad(player->getYaw())) * p;
-            motionZ += cos(deg_to_rad(player->getYaw())) * p;
-        }
-
-        if ((GetAsyncKeyState('S') & 0xff00) != 0) {
-            motionX += sin(deg_to_rad(player->getYaw())) * p;
-            motionZ += -cos(deg_to_rad(player->getYaw())) * p;
-        }
-
-        if ((GetAsyncKeyState('D') & 0xff00) != 0) {
-            motionX += -cos(deg_to_rad(player->getYaw())) * p;
-            motionZ += -sin(deg_to_rad(player->getYaw())) * p;
-        }
-
-        if ((GetAsyncKeyState('A') & 0xff00) != 0) {
-            motionX += cos(deg_to_rad(player->getYaw())) * p;
-            motionZ += sin(deg_to_rad(player->getYaw())) * p;
-        }
-
-        if ((GetAsyncKeyState(VK_SPACE) & 0xff00) != 0) {
-            motionY += 1;
-        }
-
-        if ((GetAsyncKeyState(VK_SHIFT) & 0xff00) != 0) {
-            motionY -= 1;
-        }
-
-        player->setMotion(motionX, motionY, motionZ);
-        */
 
         Sleep(20);
     }
