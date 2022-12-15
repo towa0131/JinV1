@@ -19,3 +19,15 @@ double Vector3::getY() {
 double Vector3::getZ() {
     return this->z;
 }
+
+void Vector3::setX(double x) {
+    this->x = x;
+}
+
+void Vector3::setY(double y) {
+    this->y = y;
+}
+
+void Vector3::setZ(double z) {
+    this->z = z;
+}

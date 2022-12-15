@@ -10,6 +10,12 @@ public:
 
     double getZ();
 
+    void setX(double x);
+
+    void setY(double y);
+
+    void setZ(double z);
+
 private:
     double x;
     double y;

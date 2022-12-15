@@ -16,6 +16,8 @@ public:
 
     jboolean isDead();
 
+    jboolean onGround();
+
     void setSprinting(jboolean sprinting);
 
     void setMotion(Vector3 vec);
@@ -35,6 +37,7 @@ private:
     jfieldID fdYaw;
     jfieldID fdPitch;
     jfieldID fdIsDead;
+    jfieldID fdOnGround;
     jfieldID fdMoveForward;
     jmethodID fdSetSprinting;
     jmethodID fdSwingItem;
