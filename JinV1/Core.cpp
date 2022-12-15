@@ -33,7 +33,6 @@ void Core::run() {
 
     Minecraft* mc = new Minecraft(this);
     EntityPlayerSP* player = mc->getPlayer();
-    KeyBinding* key = mc->getGameSettings()->getKeyBindForward();
 
     while (this->running) {
         this->getModuleManager()->update();
