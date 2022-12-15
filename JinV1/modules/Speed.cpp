@@ -13,6 +13,7 @@ Speed::Speed(Core *core, const char* name, int key, boolean state) : Module(core
 }
 
 void Speed::onUpdate() {
+    if (this->player->isDead()) this->player = this->mc->getPlayer();
     Vector3 motion = this->player->getMotion();
     Vector3 speedMotion = Vector3(motion.getX() * this->speed, motion.getY() * this->speed, motion.getZ() * this->speed);
     this->player->setMotion(speedMotion);

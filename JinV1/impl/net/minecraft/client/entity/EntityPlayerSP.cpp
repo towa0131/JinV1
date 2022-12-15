@@ -11,6 +11,7 @@ EntityPlayerSP::EntityPlayerSP(Core* core, jobject player) : ImplClass(core, "ne
     this->fdMotionZ = getFieldID("field_70179_y", "D");
     this->fdYaw = getFieldID("field_70177_z", "F");
     this->fdPitch = getFieldID("field_70125_A", "F");
+    this->fdIsDead = getFieldID("field_70128_L", "Z");
     this->fdMoveForward = getFieldID("field_70701_bs", "F");
     this->fdSetSprinting = getMethodID("func_70031_b", "(Z)V");
     this->fdSwingItem = getMethodID("func_71038_i", "()V");
@@ -30,6 +31,10 @@ jfloat EntityPlayerSP::getYaw() {
 
 jfloat EntityPlayerSP::getPitch() {
     return getFloat(this->player, this->fdPitch);
+}
+
+jboolean EntityPlayerSP::isDead() {
+    return getBoolean(this->player, this->fdIsDead);
 }
 
 void EntityPlayerSP::swingItem() {

@@ -14,6 +14,8 @@ public:
 
     jfloat getPitch();
 
+    jboolean isDead();
+
     void setSprinting(jboolean sprinting);
 
     void setMotion(Vector3 vec);
@@ -32,6 +34,7 @@ private:
     jfieldID fdMotionZ;
     jfieldID fdYaw;
     jfieldID fdPitch;
+    jfieldID fdIsDead;
     jfieldID fdMoveForward;
     jmethodID fdSetSprinting;
     jmethodID fdSwingItem;

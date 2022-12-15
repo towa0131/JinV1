@@ -13,6 +13,8 @@ KeepSprint::KeepSprint(Core* core, const char* name, int key, boolean state) : M
 }
 
 void KeepSprint::onUpdate() {
+    if (this->player->isDead()) this->player = this->mc->getPlayer();
+
     Vector3 vec = this->player->getVector3();
 
     if (this->player->getMoveForward() > 0.0) {
