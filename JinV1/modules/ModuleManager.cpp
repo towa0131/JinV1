@@ -2,25 +2,33 @@
 #include "ModuleManager.h"
 
 void ModuleManager::registerModule(Module *m) {
-    this->registerModule(m, false);
-}
-
-void ModuleManager::registerModule(Module *m, boolean activate) {
     this->modules.push_back(m);
-    std::cout << "[Debug] Module Registerd : " << m->getName() << std::endl;
-    if (activate) this->activate(m->getModuleId());
+    std::cout << "[Debug] Module Registered: " << m->getName() << std::endl;
 }
 
-void ModuleManager::activate(ModuleId id) {
-    this->activatedModuleId.insert(id);
+boolean ModuleManager::activate(ModuleId id) {
+    for (Module* m : this->modules) {
+        if (m->getModuleId() == id) {
+            m->setState(true);
+            return true;
+        }
+    }
+    return false;
 }
 
-void ModuleManager::deactivate(ModuleId id) {
-    this->activatedModuleId.erase(id);
+boolean ModuleManager::deactivate(ModuleId id) {
+    for (Module* m : this->modules) {
+        if (m->getModuleId() == id) {
+            m->setState(false);
+            return true;
+        }
+    }
+    return false;
 }
 
 void ModuleManager::update() {
     for (Module *m : this->modules) {
-        m->onUpdate();
+        m->keyCheck();
+        if (m->getState()) m->onUpdate();
     }
 }

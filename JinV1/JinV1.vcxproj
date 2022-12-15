@@ -159,6 +159,7 @@
     <ClInclude Include="impl\net\minecraft\client\entity\EntityPlayerSP.h" />
     <ClInclude Include="impl\net\minecraft\client\gui\FontRenderer.h" />
     <ClInclude Include="impl\net\minecraft\client\Minecraft.h" />
+    <ClInclude Include="impl\net\minecraft\client\settings\KeyBinding.h" />
     <ClInclude Include="JNI\classfile_constants.h" />
     <ClInclude Include="JNI\jawt.h" />
     <ClInclude Include="JNI\jawt_md.h" />
@@ -167,10 +168,14 @@
     <ClInclude Include="JNI\jni_md.h" />
     <ClInclude Include="JNI\jvmti.h" />
     <ClInclude Include="JNI\jvmticmlr.h" />
+    <ClInclude Include="modules\AutoClicker.h" />
     <ClInclude Include="modules\FastPlace.h" />
+    <ClInclude Include="modules\HitDelayFix.h" />
+    <ClInclude Include="modules\KeepSprint.h" />
     <ClInclude Include="modules\Module.h" />
     <ClInclude Include="modules\ModuleId.h" />
     <ClInclude Include="modules\ModuleManager.h" />
+    <ClInclude Include="modules\Speed.h" />
     <ClInclude Include="rdi\ReflectiveDLLInjection.h" />
     <ClInclude Include="rdi\ReflectiveLoader.h" />
     <ClInclude Include="utils\ProcessUtils.h" />
@@ -182,9 +187,14 @@
     <ClCompile Include="impl\net\minecraft\client\entity\EntityPlayerSP.cpp" />
     <ClCompile Include="impl\net\minecraft\client\gui\FontRenderer.cpp" />
     <ClCompile Include="impl\net\minecraft\client\Minecraft.cpp" />
+    <ClCompile Include="impl\net\minecraft\client\settings\KeyBinding.cpp" />
+    <ClCompile Include="modules\AutoClicker.cpp" />
     <ClCompile Include="modules\FastPlace.cpp" />
+    <ClCompile Include="modules\HitDelayFix.cpp" />
+    <ClCompile Include="modules\KeepSprint.cpp" />
     <ClCompile Include="modules\Module.cpp" />
     <ClCompile Include="modules\ModuleManager.cpp" />
+    <ClCompile Include="modules\Speed.cpp" />
     <ClCompile Include="rdi\ReflectiveLoader.cpp" />
     <ClCompile Include="utils\ProcessUtils.cpp" />
     <ClCompile Include="utils\Vector3.cpp" />

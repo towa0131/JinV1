@@ -7,11 +7,9 @@ class ModuleManager {
 public:
     void registerModule(Module*);
 
-    void registerModule(Module*, boolean);
+    boolean activate(ModuleId);
 
-    void activate(ModuleId);
-
-    void deactivate(ModuleId);
+    boolean deactivate(ModuleId);
 
     void update();
 

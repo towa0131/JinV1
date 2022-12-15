@@ -6,7 +6,7 @@ class FontRenderer : public ImplClass {
 public:
     FontRenderer(Core* core, jobject fontRenderer);
 
-    int drawString(const char *, float, float, int);
+    int drawString(const char *, jfloat, jfloat, jint);
 
 private:
     jobject fontRenderer;

@@ -14,15 +14,15 @@ jobject Minecraft::getMinecraft() {
     return getObject(GetMinecraft);
 }
 
-EntityPlayerSP Minecraft::getPlayer() {
+EntityPlayerSP* Minecraft::getPlayer() {
     jobject player = getObject(getMinecraft(), fdPlayer);
     if (player == NULL) std::cout << "[Error] Player is NULL!" << std::endl;
-    return EntityPlayerSP(this->core, player);
+    return new EntityPlayerSP(this->core, player);
 }
 
-FontRenderer Minecraft::getFontRenderer() {
+FontRenderer* Minecraft::getFontRenderer() {
     jobject fontRenderer = getObject(getMinecraft(), fdFontRendererObj);
-    return FontRenderer(this->core, fontRenderer);
+    return new FontRenderer(this->core, fontRenderer);
 }
 
 jobject Minecraft::getObjectMouseOver() {

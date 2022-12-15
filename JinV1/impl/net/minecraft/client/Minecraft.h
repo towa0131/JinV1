@@ -9,9 +9,9 @@ public:
 
     jobject getMinecraft();
 
-    EntityPlayerSP getPlayer();
+    EntityPlayerSP* getPlayer();
 
-    FontRenderer getFontRenderer();
+    FontRenderer* getFontRenderer();
 
     void setRightClickDelayTimer(jint);
 

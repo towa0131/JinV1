@@ -10,7 +10,15 @@ public:
 
     jfloat getMoveForward();
 
-    void setSprinting(jboolean);
+    jfloat getYaw();
+
+    jfloat getPitch();
+
+    void setSprinting(jboolean sprinting);
+
+    void setMotion(Vector3 vec);
+
+    Vector3 getMotion();
 
     void swingItem();
 
@@ -19,6 +27,11 @@ private:
     jfieldID fdPosX;
     jfieldID fdPosY;
     jfieldID fdPosZ;
+    jfieldID fdMotionX;
+    jfieldID fdMotionY;
+    jfieldID fdMotionZ;
+    jfieldID fdYaw;
+    jfieldID fdPitch;
     jfieldID fdMoveForward;
     jmethodID fdSetSprinting;
     jmethodID fdSwingItem;

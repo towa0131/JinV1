@@ -8,6 +8,8 @@ public:
 
     Module(Core *core, const char* name, ModuleId moduleId, int key);
 
+    Module(Core* core, const char* name, ModuleId moduleId, int key, boolean state);
+
     Core* getCore();
 
     const char* getName();
@@ -16,10 +18,24 @@ public:
 
     ModuleId getModuleId();
 
+    void keyCheck();
+
+    void toggle();
+
+    void setState(boolean state);
+
+    boolean getState();
+
     virtual void onUpdate();
+
+    virtual void onEnable();
+
+    virtual void onDisable();
 
 private:
     Core* core;
+
+    boolean state;
 
     const char* name;
 

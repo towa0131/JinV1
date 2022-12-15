@@ -1,36 +1,40 @@
 #pragma once
 
+#include <cmath>
 #include "Core.h"
+#include "modules/AutoClicker.h"
 #include "modules/ModuleManager.h"
 #include "modules/FastPlace.h"
+#include "modules/HitDelayFix.h"
+#include "modules/KeepSprint.h"
+#include "modules/Speed.h"
 #include "utils/ProcessUtils.h"
 #include "impl/net/minecraft/client/Minecraft.h"
 
+#ifndef M_PI
+#define M_PI 3.14159265358979
+#define deg_to_rad(deg) (((deg)/360)*2*M_PI)
+#define rad_to_deg(rad) (((rad)/2/M_PI)*360)
+#endif
+
 void Core::run() {
     this->running = true;
-    this->autoclicker = false;
-    this->lastClickTime = GetTickCount();
     this->moduleManager = new ModuleManager();
 
-    this->getModuleManager()->registerModule(new FastPlace(this, "FastPlace", 'P'), true);
+    this->getModuleManager()->registerModule(new FastPlace(this, "FastPlace", 'P', true));
+    this->getModuleManager()->registerModule(new HitDelayFix(this, "HitDelayFix", 'H', true));
+    this->getModuleManager()->registerModule(new KeepSprint(this, "KeepSprint", 'K', true));
+    this->getModuleManager()->registerModule(new AutoClicker(this, "AutoClicker", 'B', false));
+    this->getModuleManager()->registerModule(new Speed(this, "Speed", 'N', false));
 
-    ProcessUtils pu = ProcessUtils();
-	Minecraft* mc = new Minecraft(this);
-    EntityPlayerSP player = mc->getPlayer();
-    DWORD pid = GetCurrentProcessId();
-    HWND window = pu.GetWindowHandle(pid);
+
+    Minecraft* mc = new Minecraft(this);
+    EntityPlayerSP* player = mc->getPlayer();
 
     while (this->running) {
         this->getModuleManager()->update();
-		// mc->setRightClickDelayTimer(0);
-        mc->setLeftClickCounter(0);
-        Vector3 vec = player.getVector3();
+        // key->test();
 
-        if (player.getMoveForward() > 0.0) {
-            player.setSprinting(true);
-        } else {
-            player.setSprinting(false);
-        }
 
         //jobject mouseOver = mc->getObjectMouseOver();
         //if (mouseOver == NULL) {
@@ -56,22 +60,48 @@ void Core::run() {
         //    }
         //}
 
-        if (GetAsyncKeyState(0x42) & 1) {
-            this->autoclicker = !this->autoclicker;
-            std::cout << "[Debug] AutoClicker " << (this->autoclicker ? "Enabled" : "Disabled") << std::endl;
+        //std::cout << "yaw : " << player->getYaw() << std::endl;
+        //std::cout << "cos(yaw) : " << cos(deg_to_rad(player->getYaw())) << std::endl;
+        //std::cout << "sin(yaw) : " << sin(deg_to_rad(player->getYaw())) << std::endl;
+        /*
+
+        double motionX = 0;
+        double motionY = 0;
+        double motionZ = 0;
+        double p = 1.5;
+
+        if ((GetAsyncKeyState('W') & 0xff00) != 0 ) {
+            motionX += -sin(deg_to_rad(player->getYaw())) * p;
+            motionZ += cos(deg_to_rad(player->getYaw())) * p;
         }
 
-        if (this->autoclicker && GetAsyncKeyState(VK_LBUTTON) && GetTickCount() - this->lastClickTime >= 55) {
-            this->lastClickTime = GetTickCount();
-            POINT pos{};
-            if (!GetCursorPos(&pos)) std::cout << "[Error] GetCursorPos Failed" << std::endl;
-            PostMessage(window, (DWORD)WM_LBUTTONDOWN, (DWORD)MK_LBUTTON, MAKELPARAM(pos.x, pos.y));
-            PostMessage(window, (DWORD)WM_LBUTTONUP, (DWORD)MK_LBUTTON, MAKELPARAM(pos.x, pos.y));
+        if ((GetAsyncKeyState('S') & 0xff00) != 0) {
+            motionX += sin(deg_to_rad(player->getYaw())) * p;
+            motionZ += -cos(deg_to_rad(player->getYaw())) * p;
         }
 
-        // printf("(%f, %f, %f)\n", vec.getX(), vec.getY(), vec.getZ());
+        if ((GetAsyncKeyState('D') & 0xff00) != 0) {
+            motionX += -cos(deg_to_rad(player->getYaw())) * p;
+            motionZ += -sin(deg_to_rad(player->getYaw())) * p;
+        }
 
-		Sleep(20);
+        if ((GetAsyncKeyState('A') & 0xff00) != 0) {
+            motionX += cos(deg_to_rad(player->getYaw())) * p;
+            motionZ += sin(deg_to_rad(player->getYaw())) * p;
+        }
+
+        if ((GetAsyncKeyState(VK_SPACE) & 0xff00) != 0) {
+            motionY += 1;
+        }
+
+        if ((GetAsyncKeyState(VK_SHIFT) & 0xff00) != 0) {
+            motionY -= 1;
+        }
+
+        player->setMotion(motionX, motionY, motionZ);
+        */
+
+        Sleep(20);
     }
 }
 

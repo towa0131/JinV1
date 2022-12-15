@@ -13,8 +13,6 @@ public:
     JavaVMInitArgs vm_args;
 
     boolean running;
-    boolean autoclicker;
-    time_t lastClickTime;
     ModuleManager* moduleManager;
 
     void run();
