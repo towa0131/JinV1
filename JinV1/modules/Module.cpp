@@ -34,7 +34,7 @@ ModuleId Module::getModuleId() {
 }
 
 void Module::keyCheck() {
-    if (GetAsyncKeyState(this->getKeyBind()) & 1) {
+    if ((GetAsyncKeyState(this->getKeyBind()) & 1) && ((GetAsyncKeyState(VK_CONTROL) & 0xff00) != 0)) {
         this->toggle();
         std::cout << "[Debug] " << this->getName() << " " <<  (this->getState() ? "Enabled" : "Disabled") << std::endl;
     }
