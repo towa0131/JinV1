@@ -228,6 +228,9 @@
     <ClInclude Include="impl\com\moonsworth\lunar\bridge\BridgeManager.h">
       <Filter>ヘッダー ファイル\impl\com/moonsworth/lunar/bridge/</Filter>
     </ClInclude>
+    <ClInclude Include="modules\Dolphin.h">
+      <Filter>ヘッダー ファイル\modules</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -322,6 +325,9 @@
     </ClCompile>
     <ClCompile Include="impl\com\moonsworth\lunar\bridge\BridgeManager.cpp">
       <Filter>ソース ファイル\impl\com/moonsworth/lunar/bridge/</Filter>
+    </ClCompile>
+    <ClCompile Include="modules\Dolphin.cpp">
+      <Filter>ソース ファイル\modules</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

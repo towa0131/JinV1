@@ -191,6 +191,7 @@
     <ClInclude Include="modules\AutoClicker.h" />
     <ClInclude Include="modules\FastMove.h" />
     <ClInclude Include="modules\FastPlace.h" />
+    <ClInclude Include="modules\Dolphin.h" />
     <ClInclude Include="modules\HitDelayFix.h" />
     <ClInclude Include="modules\InventoryWalk.h" />
     <ClInclude Include="modules\KeepSprint.h" />
@@ -226,6 +227,7 @@
     <ClCompile Include="modules\AutoClicker.cpp" />
     <ClCompile Include="modules\FastMove.cpp" />
     <ClCompile Include="modules\FastPlace.cpp" />
+    <ClCompile Include="modules\Dolphin.cpp" />
     <ClCompile Include="modules\HitDelayFix.cpp" />
     <ClCompile Include="modules\InventoryWalk.cpp" />
     <ClCompile Include="modules\KeepSprint.cpp" />

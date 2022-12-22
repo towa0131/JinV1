@@ -10,6 +10,7 @@ MCPMapTranslator::MCPMapTranslator() {
     this->registerField("field_71466_p", "fontRendererObj", "Lnet/minecraft/client/gui/FontRenderer;");
     this->registerField("field_71476_x", "objectMouseOver", "Lnet/minecraft/util/MovingObjectPosition;");
     this->registerField("field_71474_y", "gameSettings", "Lnet/minecraft/client/settings/GameSettings;");
+    this->registerField("field_71462_r", "currentScreen", "Lnet/minecraft/client/gui/GuiScreen;");
     this->registerClass("net.minecraft.client.entity.EntityPlayerSP", "net.minecraft.client.entity.EntityPlayerSP");
     this->registerField("field_70165_t", "posX", "D");
     this->registerField("field_70163_u", "posY", "D");
@@ -24,6 +25,7 @@ MCPMapTranslator::MCPMapTranslator() {
     this->registerField("field_70701_bs", "moveForward", "F");
     this->registerMethod("func_70031_b", "setSprinting", "(Z)V");
     this->registerMethod("func_71038_i", "swingItem", "()V");
+    this->registerMethod("func_70090_H", "isInWater", "()Z");
     this->registerClass("net.minecraft.client.gui.FontRenderer", "net.minecraft.client.gui.FontRenderer");
     this->registerMethod("func_175065_a", "drawString", "(Ljava/lang/String;FFIZ)I");
     this->registerClass("net.minecraft.client.settings.GameSettings", "net.minecraft.client.settings.GameSettings");
@@ -38,5 +40,5 @@ MCPMapTranslator::MCPMapTranslator() {
     this->registerMethod("func_151463_i", "getKeyCode", "()I");
     this->registerMethod("func_74510_a", "setKeyBindState", "(IZ)V");
     this->registerField("field_74513_e", "pressed", "Z");
-
+    this->registerClass("net.minecraft.util.MovingObjectPosition", "net.minecraft.util.MovingObjectPosition");
 }

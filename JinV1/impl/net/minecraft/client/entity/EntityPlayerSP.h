@@ -18,6 +18,8 @@ public:
 
     jboolean onGround();
 
+    jboolean isInWater();
+
     void setSprinting(jboolean sprinting);
 
     void setMotion(Vector3 vec);
@@ -41,4 +43,5 @@ private:
     jfieldID fdMoveForward;
     jmethodID fdSetSprinting;
     jmethodID fdSwingItem;
+    jmethodID fdIsInWater;
 };

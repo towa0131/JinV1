@@ -7,6 +7,7 @@
 #include "modules/ModuleManager.h"
 #include "modules/FastPlace.h"
 #include "modules/FastMove.h"
+#include "modules/Dolphin.h"
 #include "modules/HitDelayFix.h"
 #include "modules/KeepSprint.h"
 #include "modules/Speed.h"
@@ -33,6 +34,7 @@ void Core::run() {
     this->getModuleManager()->registerModule(new InventoryWalk(this, "InventoryWalk", 'I', false));
     this->getModuleManager()->registerModule(new Speed(this, "Speed", 'N', false));
     this->getModuleManager()->registerModule(new FastMove(this, "FastMove", 'M', false));
+    this->getModuleManager()->registerModule(new Dolphin(this, "Dolphin ", 'D', false));
 
     //if (!glfwInit()) {
     //    std::cout << "glfw initialize failed!" << std::endl;
@@ -87,31 +89,6 @@ void Core::run() {
 
         //ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
         //glfwSwapBuffers(window);
-
-
-        //jobject mouseOver = mc->getObjectMouseOver();
-        //if (mouseOver == NULL) {
-        //    std::cout << "ObjectMouseOver is NULL" << std::endl;
-        //} else {
-        //    // "Ljava.lang.Enum" typeOfHit 
-        //    // Lnet/minecraft/util/MovingObjectPosition$MovingObjectType;
-        //    jclass cls = ImplClass(this, "net.minecraft.util.MovingObjectPosition").getClass("net.minecraft.util.MovingObjectPosition");
-        //    if (cls == NULL) {
-        //        std::cout << "net.minecraft.util.MovingObjectPosition not found" << std::endl;
-        //    } else {
-        //        jfieldID typeOfHit = this->getEnv()->GetFieldID(cls, "field_72313_a", "Lnet/minecraft/util/MovingObjectPosition$MovingObjectType;");
-        //        if (typeOfHit == NULL) {
-        //            std::cout << "typeOfHit(jfieldID) is NULL" << std::endl;
-        //        } else {
-        //            jobject res = this->getEnv()->GetObjectField(mouseOver, typeOfHit);
-        //            if (res == NULL) {
-        //                std::cout << "typeOfHit(Object) is NULL" << std::endl;
-        //            } else {
-        //                std::cout << (jstring)res << std::endl;
-        //            }
-        //        }
-        //    }
-        //}
 
         Sleep(20);
     }

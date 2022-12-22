@@ -16,6 +16,7 @@ EntityPlayerSP::EntityPlayerSP(Core* core, jobject player) : ImplClass(core, "ne
     this->fdMoveForward = getFieldID("moveForward");
     this->fdSetSprinting = getMethodID("setSprinting");
     this->fdSwingItem = getMethodID("swingItem");
+    this->fdIsInWater = getMethodID("isInWater");
 }
 
 Vector3 EntityPlayerSP::getVector3() {
@@ -40,6 +41,10 @@ jboolean EntityPlayerSP::isDead() {
 
 jboolean EntityPlayerSP::onGround() {
     return getBoolean(this->player, this->fdOnGround);
+}
+
+jboolean EntityPlayerSP::isInWater() {
+    return getBoolean(this->player, this->fdIsInWater);
 }
 
 void EntityPlayerSP::swingItem() {
