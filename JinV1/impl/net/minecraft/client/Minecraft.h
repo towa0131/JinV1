@@ -22,6 +22,8 @@ public:
 
     jobject getObjectMouseOver();
 
+    jobject getCurrentScreen();
+
 private:
     jmethodID GetMinecraft;
     jfieldID fdRightClickDelayTimer;
@@ -30,4 +32,5 @@ private:
     jfieldID fdFontRendererObj;
     jfieldID fdObjectMouseOver;
     jfieldID fdGameSettings;
+    jfieldID fdCurrentScreen;
 };

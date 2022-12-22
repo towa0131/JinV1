@@ -9,6 +9,7 @@ Minecraft::Minecraft(Core* core) : ImplClass(core, "net.minecraft.client.Minecra
     fdFontRendererObj = getFieldID("fontRendererObj");
     fdObjectMouseOver = getFieldID("objectMouseOver");
     fdGameSettings = getFieldID("gameSettings");
+    fdCurrentScreen = getFieldID("currentScreen");
 }
 
 jobject Minecraft::getMinecraft() {
@@ -33,6 +34,10 @@ GameSettings* Minecraft::getGameSettings() {
 
 jobject Minecraft::getObjectMouseOver() {
     return getObject(getMinecraft(), fdObjectMouseOver);
+}
+
+jobject Minecraft::getCurrentScreen() {
+    return getObject(getMinecraft(), fdCurrentScreen);
 }
 
 void Minecraft::setRightClickDelayTimer(jint rightClickDelayTimer) {
