@@ -2,13 +2,13 @@
 
 GameSettings::GameSettings(Core* core, jobject gameSettings) : ImplClass(core, "net.minecraft.client.settings.GameSettings") {
     this->gameSettings = gameSettings;
-    this->fdKeyBindAttack = getFieldID("field_74312_F", "Lnet/minecraft/client/settings/KeyBinding;");
-    this->fdKeyBindJump = getFieldID("field_74314_A", "Lnet/minecraft/client/settings/KeyBinding;");
-    this->fdKeyBindDrop = getFieldID("field_74316_C", "Lnet/minecraft/client/settings/KeyBinding;");
-    this->fdKeyBindForward = getFieldID("field_74351_w", "Lnet/minecraft/client/settings/KeyBinding;");
-    this->fdKeyBindBack = getFieldID("field_74368_y", "Lnet/minecraft/client/settings/KeyBinding;");
-    this->fdKeyBindRight = getFieldID("field_74366_z", "Lnet/minecraft/client/settings/KeyBinding;");
-    this->fdKeyBindLeft = getFieldID("field_74370_x", "Lnet/minecraft/client/settings/KeyBinding;");
+    this->fdKeyBindAttack = getFieldID("keyBindAttack");
+    this->fdKeyBindJump = getFieldID("keyBindJump");
+    this->fdKeyBindDrop = getFieldID("keyBindDrop");
+    this->fdKeyBindForward = getFieldID("keyBindForward");
+    this->fdKeyBindBack = getFieldID("keyBindBack");
+    this->fdKeyBindRight = getFieldID("keyBindRight");
+    this->fdKeyBindLeft = getFieldID("keyBindLeft");
 }
 
 KeyBinding* GameSettings::getKeyBindAttack() {

@@ -2,9 +2,9 @@
 
 KeyBinding::KeyBinding(Core* core, jobject keyBinding) : ImplClass(core, "net.minecraft.client.settings.KeyBinding") {
     this->keyBinding = keyBinding;
-    this->mdGetKeyCode = getMethodID("func_151463_i", "()I");
-    this->mdSetKeyBindState = getStaticMethodID("func_74510_a", "(IZ)V");
-    this->fdPressed = getFieldID("field_74513_e", "Z");
+    this->mdGetKeyCode = getMethodID("getKeyCode");
+    this->mdSetKeyBindState = getStaticMethodID("setKeyBindState");
+    this->fdPressed = getFieldID("pressed");
 }
 
 jint KeyBinding::getKeyCode() {
@@ -16,6 +16,5 @@ jboolean KeyBinding::isPressed() {
 }
 
 void KeyBinding::setKeyBindState(jint key, jboolean state) {
-    jfieldID pressed = getFieldID("field_74513_e", "Z");
-    setBoolean(this->keyBinding, pressed, state);
+    setBoolean(this->keyBinding, this->fdPressed, state);
 }

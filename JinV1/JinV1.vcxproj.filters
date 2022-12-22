@@ -64,6 +64,33 @@
     <Filter Include="ヘッダー ファイル\impl\net/minecraft/client/settings/">
       <UniqueIdentifier>{13d4af5e-1deb-4b09-bff6-6b20ed074ee1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\imgui">
+      <UniqueIdentifier>{93920cc5-f5f1-430c-8a80-768c54ccdb53}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\imgui">
+      <UniqueIdentifier>{44dbe6f5-e6e0-457a-ad47-e8aa9fdac0ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\imgui\GLFW">
+      <UniqueIdentifier>{37a4d9c9-a5b7-4650-907a-90e190f25f48}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\impl\net/minecraft/network/play/client/">
+      <UniqueIdentifier>{410bacde-f1f4-4caa-b43c-cb405db800cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\impl\net/minecraft/network/play/client/">
+      <UniqueIdentifier>{cc85d573-ea91-4306-ac0d-0c3892e6bfa8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\mapping">
+      <UniqueIdentifier>{009b4818-fb0c-4000-b774-286c9eae1682}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\mapping">
+      <UniqueIdentifier>{4f06c7e4-aca9-48a8-9498-a08da58401e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\impl\com/moonsworth/lunar/bridge/">
+      <UniqueIdentifier>{bca4fd0d-c6e8-45fb-a84c-f019a4414ec7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\impl\com/moonsworth/lunar/bridge/">
+      <UniqueIdentifier>{6e1c37e8-f5e7-47ba-af4d-0d75259aced8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="JNI\classfile_constants.h">
@@ -150,6 +177,57 @@
     <ClInclude Include="modules\InventoryWalk.h">
       <Filter>ヘッダー ファイル\modules</Filter>
     </ClInclude>
+    <ClInclude Include="imgui\imstb_rectpack.h">
+      <Filter>ヘッダー ファイル\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imstb_textedit.h">
+      <Filter>ヘッダー ファイル\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imstb_truetype.h">
+      <Filter>ヘッダー ファイル\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imconfig.h">
+      <Filter>ヘッダー ファイル\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imgui.h">
+      <Filter>ヘッダー ファイル\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imgui_internal.h">
+      <Filter>ヘッダー ファイル\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imgui_impl_glfw.h">
+      <Filter>ヘッダー ファイル\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\GLFW\glfw3.h">
+      <Filter>ヘッダー ファイル\imgui\GLFW</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\GLFW\glfw3native.h">
+      <Filter>ヘッダー ファイル\imgui\GLFW</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imgui_impl_opengl3.h">
+      <Filter>ヘッダー ファイル\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imgui_impl_opengl3_loader.h">
+      <Filter>ヘッダー ファイル\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="modules\FastMove.h">
+      <Filter>ヘッダー ファイル\modules</Filter>
+    </ClInclude>
+    <ClInclude Include="impl\net\minecraft\network\play\client\C03PacketPlayer.h">
+      <Filter>ヘッダー ファイル\impl\net/minecraft/network/play/client/</Filter>
+    </ClInclude>
+    <ClInclude Include="mapping\LunarMapTranslator.h">
+      <Filter>ヘッダー ファイル\mapping</Filter>
+    </ClInclude>
+    <ClInclude Include="mapping\MapTranslator.h">
+      <Filter>ヘッダー ファイル\mapping</Filter>
+    </ClInclude>
+    <ClInclude Include="mapping\MCPMapTranslator.h">
+      <Filter>ヘッダー ファイル\mapping</Filter>
+    </ClInclude>
+    <ClInclude Include="impl\com\moonsworth\lunar\bridge\BridgeManager.h">
+      <Filter>ヘッダー ファイル\impl\com/moonsworth/lunar/bridge/</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -205,6 +283,45 @@
     </ClCompile>
     <ClCompile Include="modules\InventoryWalk.cpp">
       <Filter>ソース ファイル\modules</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_tables.cpp">
+      <Filter>ソース ファイル\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_widgets.cpp">
+      <Filter>ソース ファイル\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui.cpp">
+      <Filter>ソース ファイル\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_demo.cpp">
+      <Filter>ソース ファイル\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_draw.cpp">
+      <Filter>ソース ファイル\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_impl_glfw.cpp">
+      <Filter>ソース ファイル\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_impl_opengl3.cpp">
+      <Filter>ソース ファイル\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="modules\FastMove.cpp">
+      <Filter>ソース ファイル\modules</Filter>
+    </ClCompile>
+    <ClCompile Include="impl\net\minecraft\network\play\client\C03PacketPlayer.cpp">
+      <Filter>ソース ファイル\impl\net/minecraft/network/play/client/</Filter>
+    </ClCompile>
+    <ClCompile Include="mapping\LunarMapTranslator.cpp">
+      <Filter>ソース ファイル\mapping</Filter>
+    </ClCompile>
+    <ClCompile Include="mapping\MapTranslator.cpp">
+      <Filter>ソース ファイル\mapping</Filter>
+    </ClCompile>
+    <ClCompile Include="mapping\MCPMapTranslator.cpp">
+      <Filter>ソース ファイル\mapping</Filter>
+    </ClCompile>
+    <ClCompile Include="impl\com\moonsworth\lunar\bridge\BridgeManager.cpp">
+      <Filter>ソース ファイル\impl\com/moonsworth/lunar/bridge/</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

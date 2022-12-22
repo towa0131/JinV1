@@ -1,83 +1,156 @@
 #pragma once
 #include "../Core.h"
 #include <iostream>
+#include <algorithm>
 
 class ImplClass {
 public:
     Core* core;
     jclass cls;
 
-    ImplClass(Core *core, const char *className) {
+    ImplClass(Core* core, const char* className) {
         this->core = core;
         this->cls = getClass(className);
-
         if (this->cls == NULL) {
             std::cout << "[Error] Class Not Found : " << className << std::endl;
-        } else {
+        }
+        else {
             std::cout << "[Debug] Class : " << className << std::endl;
         }
     }
 
     jobject getClassLoader() {
-        jclass launch = core->getEnv()->FindClass("net/minecraft/launchwrapper/Launch");
-        jfieldID sfid = core->getEnv()->GetStaticFieldID(launch, "classLoader", "Lnet/minecraft/launchwrapper/LaunchClassLoader;");
+        jclass launch = this->core->getEnv()->FindClass("net/minecraft/launchwrapper/Launch");
+        jfieldID sfid = this->core->getEnv()->GetStaticFieldID(launch, "classLoader", "Lnet/minecraft/launchwrapper/LaunchClassLoader;");
         jobject classLoader = core->getEnv()->GetStaticObjectField(launch, sfid);
 
         return classLoader;
     }
 
-    jclass getClass(const char *clsName) {
-        jstring name = core->getEnv()->NewStringUTF(clsName);
+    jclass getClass(const char* clsName) {
+        jstring name = this->core->getEnv()->NewStringUTF(this->core->getMapping()->getClass(clsName));
         std::cout << "[Debug] Loading class loader... ";
         jobject classLoader = getClassLoader();
         std::cout << "Loaded!" << std::endl;
-        jmethodID mid = core->getEnv()->GetMethodID(core->getEnv()->GetObjectClass(classLoader), "findClass", "(Ljava/lang/String;)Ljava/lang/Class;");
-        return (jclass)core->getEnv()->CallObjectMethod(classLoader, mid, name);
+        jmethodID mid = this->core->getEnv()->GetMethodID(core->getEnv()->GetObjectClass(classLoader), "findClass", "(Ljava/lang/String;)Ljava/lang/Class;");
+        return (jclass)this->core->getEnv()->CallObjectMethod(classLoader, mid, name);
     }
 
-    jmethodID getMethodID(const char *name, const char *sig) {
-        return this->core->getEnv()->GetMethodID(this->cls, name, sig);
+    jmethodID getMethodID(const char* name) {
+        std::pair<const char*, const char*> method = this->core->getMapping()->getMethod(name);
+        return this->core->getEnv()->GetMethodID(this->cls, method.first, method.second);
     }
 
-    jmethodID getStaticMethodID(const char *name, const char *sig) {
-        return this->core->getEnv()->GetStaticMethodID(this->cls, name, sig);
+    jmethodID getStaticMethodID(const char* name) {
+        std::pair<const char*, const char*> method = this->core->getMapping()->getMethod(name);
+        return this->core->getEnv()->GetStaticMethodID(this->cls, method.first, method.second);
     }
 
-    jfieldID getFieldID(const char* name, const char* sig) {
-        return this->core->getEnv()->GetFieldID(this->cls, name, sig);
+    jfieldID getFieldID(const char* name) {
+        std::pair<const char*, const char*> field = this->core->getMapping()->getField(name);
+        return this->core->getEnv()->GetFieldID(this->cls, field.first, field.second);
     }
 
-    jfieldID getStaticFieldID(const char* name, const char* sig) {
-        return this->core->getEnv()->GetStaticFieldID(this->cls, name, sig);
+    jfieldID getStaticFieldID(const char* name) {
+        std::pair<const char*, const char*> field = this->core->getMapping()->getField(name);
+        return this->core->getEnv()->GetStaticFieldID(this->cls, field.first, field.second);
     }
 
-    template <class T> jboolean getBoolean(jobject parent, jmethodID method, T values...) { return this->core->getEnv()->CallBooleanMethod(parent, method, values); }
-    template <class T> jboolean getBoolean(jmethodID method, T values...) { return this->core->getEnv()->CallStaticBooleanMethod(cls, method, values); }
-    jboolean getBoolean(jobject parent, jmethodID method) { return this->core->getEnv()->CallBooleanMethod(parent, method); }
-    jboolean getBoolean(jmethodID method) { return this->core->getEnv()->CallStaticBooleanMethod(cls, method); }
-    jboolean getBoolean(jobject parent, jfieldID field) { return this->core->getEnv()->GetBooleanField(parent, field); }
-    jboolean getBoolean(jfieldID field) { return this->core->getEnv()->GetStaticBooleanField(cls, field); }
+    template <class T> jboolean getBoolean(jobject parent, jmethodID method, T values...) {
+        return this->core->getEnv()->CallBooleanMethod(parent, method, values);
+    }
 
-    template <class T> jbyte getByte(jobject parent, jmethodID method, T values...) { return this->core->getEnv()->CallByteMethod(parent, method, values); }
-    template <class T> jbyte getByte(jmethodID method, T values...) { return this->core->getEnv()->CallStaticByteMethod(cls, method, values); }
-    jbyte getByte(jobject parent, jmethodID method) { return this->core->getEnv()->CallByteMethod(parent, method); }
-    jbyte getByte(jmethodID method) { return this->core->getEnv()->CallStaticByteMethod(cls, method); }
-    jbyte getByte(jobject parent, jfieldID field) { return this->core->getEnv()->GetByteField(parent, field); }
-    jbyte getByte(jfieldID field) { return this->core->getEnv()->GetStaticByteField(cls, field); }
+    template <class T> jboolean getBoolean(jmethodID method, T values...) {
+        return this->core->getEnv()->CallStaticBooleanMethod(cls, method, values);
+    }
 
-    template <class T> jchar getChar(jobject parent, jmethodID method, T values...) { return this->core->getEnv()->CallCharMethod(parent, method, values); }
-    template <class T> jchar getChar(jmethodID method, T values...) { return this->core->getEnv()->CallStaticCharMethod(cls, method, values); }
-    jchar getChar(jobject parent, jmethodID method) { return this->core->getEnv()->CallCharMethod(parent, method); }
-    jchar getChar(jmethodID method) { return this->core->getEnv()->CallStaticCharMethod(cls, method); }
-    jchar getChar(jobject parent, jfieldID field) { return this->core->getEnv()->GetCharField(parent, field); }
-    jchar getChar(jfieldID field) { return this->core->getEnv()->GetStaticCharField(cls, field); }
+    jboolean getBoolean(jobject parent, jmethodID method) {
+        return this->core->getEnv()->CallBooleanMethod(parent, method);
+    }
 
-    template <class T> jshort getShort(jobject parent, jmethodID method, T values...) { return this->core->getEnv()->CallShortMethod(parent, method, values); }
-    template <class T> jshort getShort(jmethodID method, T values...) { return this->core->getEnv()->CallStaticShortMethod(cls, method, values); }
-    jshort getShort(jobject parent, jmethodID method) { return this->core->getEnv()->CallShortMethod(parent, method); }
-    jshort getShort(jmethodID method) { return this->core->getEnv()->CallStaticShortMethod(cls, method); }
-    jshort getShort(jobject parent, jfieldID field) { return this->core->getEnv()->GetShortField(parent, field); }
-    jshort getShort(jfieldID field) { return this->core->getEnv()->GetStaticShortField(cls, field); }
+    jboolean getBoolean(jmethodID method) {
+        return this->core->getEnv()->CallStaticBooleanMethod(cls, method);
+    }
+
+    jboolean getBoolean(jobject parent, jfieldID field) {
+        return this->core->getEnv()->GetBooleanField(parent, field);
+    }
+
+    jboolean getBoolean(jfieldID field) {
+        return this->core->getEnv()->GetStaticBooleanField(cls, field);
+    }
+
+    template <class T> jbyte getByte(jobject parent, jmethodID method, T values...) {
+        return this->core->getEnv()->CallByteMethod(parent, method, values);
+    }
+
+    template <class T> jbyte getByte(jmethodID method, T values...) {
+        return this->core->getEnv()->CallStaticByteMethod(cls, method, values);
+    }
+
+    jbyte getByte(jobject parent, jmethodID method) {
+        return this->core->getEnv()->CallByteMethod(parent, method);
+    }
+
+    jbyte getByte(jmethodID method) {
+        return this->core->getEnv()->CallStaticByteMethod(cls, method);
+    }
+
+    jbyte getByte(jobject parent, jfieldID field) {
+        return this->core->getEnv()->GetByteField(parent, field);
+    }
+
+    jbyte getByte(jfieldID field) {
+        return this->core->getEnv()->GetStaticByteField(cls, field);
+    }
+
+    template <class T> jchar getChar(jobject parent, jmethodID method, T values...) {
+        return this->core->getEnv()->CallCharMethod(parent, method, values);
+    }
+
+    template <class T> jchar getChar(jmethodID method, T values...) {
+        return this->core->getEnv()->CallStaticCharMethod(cls, method, values);
+    }
+
+    jchar getChar(jobject parent, jmethodID method) {
+        return this->core->getEnv()->CallCharMethod(parent, method);
+    }
+
+    jchar getChar(jmethodID method) {
+        return this->core->getEnv()->CallStaticCharMethod(cls, method);
+    }
+
+    jchar getChar(jobject parent, jfieldID field) {
+        return this->core->getEnv()->GetCharField(parent, field);
+    }
+
+    jchar getChar(jfieldID field) {
+        return this->core->getEnv()->GetStaticCharField(cls, field);
+    }
+
+    template <class T> jshort getShort(jobject parent, jmethodID method, T values...) {
+        return this->core->getEnv()->CallShortMethod(parent, method, values);
+    }
+
+    template <class T> jshort getShort(jmethodID method, T values...) {
+        return this->core->getEnv()->CallStaticShortMethod(cls, method, values);
+    }
+
+    jshort getShort(jobject parent, jmethodID method) {
+        return this->core->getEnv()->CallShortMethod(parent, method);
+
+    }
+    jshort getShort(jmethodID method) {
+        return this->core->getEnv()->CallStaticShortMethod(cls, method);
+    }
+
+    jshort getShort(jobject parent, jfieldID field) {
+        return this->core->getEnv()->GetShortField(parent, field);
+    }
+
+    jshort getShort(jfieldID field) {
+        return this->core->getEnv()->GetStaticShortField(cls, field);
+    }
 
     template <class T> jint getInt(jobject parent, jmethodID method, T values...) { return this->core->getEnv()->CallIntMethod(parent, method, values); }
     template <class T> jint getInt(jmethodID method, T values...) { return this->core->getEnv()->CallStaticIntMethod(cls, method, values); }
@@ -135,9 +208,19 @@ public:
     void setFloat(jobject parent, jfieldID field, jfloat value) { this->core->getEnv()->SetFloatField(parent, field, value); }
     void setFloat(jfieldID field, jfloat value) { this->core->getEnv()->SetStaticFloatField(cls, field, value); }
 
-    void setDouble(jobject parent, jfieldID field, jdouble value) { this->core->getEnv()->SetDoubleField(parent, field, value); }
-    void setDouble(jfieldID field, jdouble value) { this->core->getEnv()->SetStaticDoubleField(cls, field, value); }
+    void setDouble(jobject parent, jfieldID field, jdouble value) {
+        this->core->getEnv()->SetDoubleField(parent, field, value);
+    }
 
-    void setObject(jobject parent, jfieldID field, jobject value) { this->core->getEnv()->SetObjectField(parent, field, value); }
-    void setObject(jfieldID field, jobject value) { this->core->getEnv()->SetStaticObjectField(cls, field, value); }
+    void setDouble(jfieldID field, jdouble value) {
+        this->core->getEnv()->SetStaticDoubleField(cls, field, value);
+    }
+
+    void setObject(jobject parent, jfieldID field, jobject value) {
+        this->core->getEnv()->SetObjectField(parent, field, value);
+    }
+
+    void setObject(jfieldID field, jobject value) {
+        this->core->getEnv()->SetStaticObjectField(cls, field, value);
+    }
 };

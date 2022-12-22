@@ -2,7 +2,7 @@
 
 FontRenderer::FontRenderer(Core* core, jobject fontRenderer) : ImplClass(core, "net.minecraft.client.gui.FontRenderer") {
     this->fontRenderer = fontRenderer;
-    this->fdDrawString = getMethodID("func_175065_a", "(Ljava/lang/String;FFIZ)I");
+    this->fdDrawString = getMethodID("drawString");
 }
 
 int FontRenderer::drawString(const char *text, jfloat x, jfloat y, jint color) {

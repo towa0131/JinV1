@@ -1,6 +1,7 @@
 #pragma once
 
 #include "JNI/jni.h"
+#include "mapping/MapTranslator.h"
 #include <iostream>
 #include <windows.h>
 
@@ -14,6 +15,7 @@ public:
 
     boolean running;
     ModuleManager* moduleManager;
+    MapTranslator* mapping;
 
     void run();
 
@@ -22,6 +24,8 @@ public:
     void setRunning(boolean);
 
     ModuleManager* getModuleManager();
+
+    MapTranslator* getMapping();
 
     JNIEnv* getEnv();
 };

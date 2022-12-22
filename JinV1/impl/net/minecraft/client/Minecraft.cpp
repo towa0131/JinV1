@@ -2,13 +2,13 @@
 #include "Minecraft.h"
 
 Minecraft::Minecraft(Core* core) : ImplClass(core, "net.minecraft.client.Minecraft") {
-    GetMinecraft = getStaticMethodID("func_71410_x", "()Lnet/minecraft/client/Minecraft;");
-    fdRightClickDelayTimer = getFieldID("field_71467_ac", "I");
-    fdLeftClickCounter = getFieldID("field_71429_W", "I");
-    fdPlayer = getFieldID("field_71439_g", "Lnet/minecraft/client/entity/EntityPlayerSP;");
-    fdFontRendererObj = getFieldID("field_71466_p", "Lnet/minecraft/client/gui/FontRenderer;");
-    fdObjectMouseOver = getFieldID("field_71476_x", "Lnet/minecraft/util/MovingObjectPosition;");
-    fdGameSettings = getFieldID("field_71474_y", "Lnet/minecraft/client/settings/GameSettings;");
+    GetMinecraft = getStaticMethodID("getMinecraft");
+    fdRightClickDelayTimer = getFieldID("rightClickDelayTimer");
+    fdLeftClickCounter = getFieldID("leftClickCounter");
+    fdPlayer = getFieldID("thePlayer");
+    fdFontRendererObj = getFieldID("fontRendererObj");
+    fdObjectMouseOver = getFieldID("objectMouseOver");
+    fdGameSettings = getFieldID("gameSettings");
 }
 
 jobject Minecraft::getMinecraft() {

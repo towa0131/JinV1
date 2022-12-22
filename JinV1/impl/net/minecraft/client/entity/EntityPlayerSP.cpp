@@ -3,19 +3,19 @@
 
 EntityPlayerSP::EntityPlayerSP(Core* core, jobject player) : ImplClass(core, "net.minecraft.client.entity.EntityPlayerSP") {
     this->player = player;
-    this->fdPosX = getFieldID("field_70165_t", "D");
-    this->fdPosY = getFieldID("field_70163_u", "D");
-    this->fdPosZ = getFieldID("field_70161_v", "D");
-    this->fdMotionX = getFieldID("field_70159_w", "D");
-    this->fdMotionY = getFieldID("field_70181_x", "D");
-    this->fdMotionZ = getFieldID("field_70179_y", "D");
-    this->fdYaw = getFieldID("field_70177_z", "F");
-    this->fdPitch = getFieldID("field_70125_A", "F");
-    this->fdIsDead = getFieldID("field_70128_L", "Z");
-    this->fdOnGround = getFieldID("field_70122_E", "Z");
-    this->fdMoveForward = getFieldID("field_70701_bs", "F");
-    this->fdSetSprinting = getMethodID("func_70031_b", "(Z)V");
-    this->fdSwingItem = getMethodID("func_71038_i", "()V");
+    this->fdPosX = getFieldID("posX");
+    this->fdPosY = getFieldID("posY");
+    this->fdPosZ = getFieldID("posZ");
+    this->fdMotionX = getFieldID("motionX");
+    this->fdMotionY = getFieldID("motionY");
+    this->fdMotionZ = getFieldID("motionZ");
+    this->fdYaw = getFieldID("rotationYaw");
+    this->fdPitch = getFieldID("rotationPitch");
+    this->fdIsDead = getFieldID("isDead");
+    this->fdOnGround = getFieldID("onGround");
+    this->fdMoveForward = getFieldID("moveForward");
+    this->fdSetSprinting = getMethodID("setSprinting");
+    this->fdSwingItem = getMethodID("swingItem");
 }
 
 Vector3 EntityPlayerSP::getVector3() {
