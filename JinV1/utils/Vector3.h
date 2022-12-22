@@ -16,6 +16,10 @@ public:
 
     void setZ(double z);
 
+    void add(Vector3 vec);
+
+    void multiply(Vector3 vec);
+
 private:
     double x;
     double y;

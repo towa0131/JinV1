@@ -31,3 +31,15 @@ void Vector3::setY(double y) {
 void Vector3::setZ(double z) {
     this->z = z;
 }
+
+void Vector3::add(Vector3 vec) {
+    this->x += vec.x;
+    this->y += vec.y;
+    this->z += vec.z;
+}
+
+void Vector3::multiply(Vector3 vec) {
+    this->x *= vec.x;
+    this->y *= vec.y;
+    this->z *= vec.z;
+}
