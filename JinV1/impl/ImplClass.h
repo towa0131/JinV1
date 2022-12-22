@@ -29,9 +29,7 @@ public:
 
     jclass getClass(const char* clsName) {
         jstring name = this->core->getEnv()->NewStringUTF(this->core->getMapping()->getClass(clsName));
-        std::cout << "[Debug] Loading class loader... ";
         jobject classLoader = getClassLoader();
-        std::cout << "Loaded!" << std::endl;
         jmethodID mid = this->core->getEnv()->GetMethodID(core->getEnv()->GetObjectClass(classLoader), "findClass", "(Ljava/lang/String;)Ljava/lang/Class;");
         return (jclass)this->core->getEnv()->CallObjectMethod(classLoader, mid, name);
     }
@@ -152,61 +150,181 @@ public:
         return this->core->getEnv()->GetStaticShortField(cls, field);
     }
 
-    template <class T> jint getInt(jobject parent, jmethodID method, T values...) { return this->core->getEnv()->CallIntMethod(parent, method, values); }
-    template <class T> jint getInt(jmethodID method, T values...) { return this->core->getEnv()->CallStaticIntMethod(cls, method, values); }
-    jint getInt(jobject parent, jmethodID method) { return this->core->getEnv()->CallIntMethod(parent, method); }
-    jint getInt(jmethodID method) { return this->core->getEnv()->CallStaticIntMethod(cls, method); }
-    jint getInt(jobject parent, jfieldID field) { return this->core->getEnv()->GetIntField(parent, field); }
-    jint getInt(jfieldID field) { return this->core->getEnv()->GetStaticIntField(cls, field); }
+    template <class T> jint getInt(jobject parent, jmethodID method, T values...) {
+        return this->core->getEnv()->CallIntMethod(parent, method, values);
+    }
 
-    template <class T> jlong getLong(jobject parent, jmethodID method, T values...) { return this->core->getEnv()->CallLongMethod(parent, method, values); }
-    template <class T> jlong getLong(jmethodID method, T values...) { return this->core->getEnv()->CallStaticLongMethod(cls, method, values); }
-    jlong getLong(jobject parent, jmethodID method) { return this->core->getEnv()->CallLongMethod(parent, method); }
-    jlong getLong(jmethodID method) { return this->core->getEnv()->CallStaticLongMethod(cls, method); }
-    jlong getLong(jobject parent, jfieldID field) { return this->core->getEnv()->GetLongField(parent, field); }
-    jlong getLong(jfieldID field) { return this->core->getEnv()->GetStaticLongField(cls, field); }
+    template <class T> jint getInt(jmethodID method, T values...) {
+        return this->core->getEnv()->CallStaticIntMethod(cls, method, values);
+    }
 
-    template <class T> jfloat getFloat(jobject parent, jmethodID method, T values...) { return this->core->getEnv()->CallFloatMethod(parent, method, values); }
-    template <class T> jfloat getFloat(jmethodID method, T values...) { return this->core->getEnv()->CallStaticFloatMethod(cls, method, values); }
-    jfloat getFloat(jobject parent, jmethodID method) { return this->core->getEnv()->CallFloatMethod(parent, method); }
-    jfloat getFloat(jmethodID method) { return this->core->getEnv()->CallStaticFloatMethod(cls, method); }
-    jfloat getFloat(jobject parent, jfieldID field) { return this->core->getEnv()->GetFloatField(parent, field); }
-    jfloat getFloat(jfieldID field) { return this->core->getEnv()->GetStaticFloatField(cls, field); }
+    jint getInt(jobject parent, jmethodID method) {
+        return this->core->getEnv()->CallIntMethod(parent, method);
+    }
 
-    template <class T> jdouble getDouble(jobject parent, jmethodID method, T values...) { return this->core->getEnv()->CallDoubleMethod(parent, method, values); }
-    template <class T> jdouble getDouble(jmethodID method, T values...) { return this->core->getEnv()->CallStaticDoubleMethod(cls, method, values); }
-    jdouble getDouble(jobject parent, jmethodID method) { return this->core->getEnv()->CallDoubleMethod(parent, method); }
-    jdouble getDouble(jmethodID method) { return this->core->getEnv()->CallStaticDoubleMethod(cls, method); }
-    jdouble getDouble(jobject parent, jfieldID field) { return this->core->getEnv()->GetDoubleField(parent, field); }
-    jdouble getDouble(jfieldID field) { return this->core->getEnv()->GetStaticDoubleField(cls, field); }
+    jint getInt(jmethodID method) {
+        return this->core->getEnv()->CallStaticIntMethod(cls, method);
+    }
 
-    template <class T> jobject getObject(jobject parent, jmethodID method, T values...) { return this->core->getEnv()->CallObjectMethod(parent, method, values); }
-    template <class T> jobject getObject(jmethodID method, T values...) { return this->core->getEnv()->CallStaticObjectMethod(cls, method, values); }
-    jobject getObject(jobject parent, jmethodID method) { return this->core->getEnv()->CallObjectMethod(parent, method); }
-    jobject getObject(jmethodID method) { return this->core->getEnv()->CallStaticObjectMethod(cls, method); }
-    jobject getObject(jobject parent, jfieldID field) { return this->core->getEnv()->GetObjectField(parent, field); }
-    jobject getObject(jfieldID field) { return this->core->getEnv()->GetStaticObjectField(cls, field); }
+    jint getInt(jobject parent, jfieldID field) {
+        return this->core->getEnv()->GetIntField(parent, field);
+    }
 
-    void setBoolean(jobject parent, jfieldID field, jboolean value) { this->core->getEnv()->SetBooleanField(parent, field, value); }
-    void setBoolean(jfieldID field, jboolean value) { this->core->getEnv()->SetStaticBooleanField(cls, field, value); }
+    jint getInt(jfieldID field) {
+        return this->core->getEnv()->GetStaticIntField(cls, field);
+    }
 
-    void setByte(jobject parent, jfieldID field, jbyte value) { this->core->getEnv()->SetByteField(parent, field, value); }
-    void setByte(jfieldID field, jbyte value) { this->core->getEnv()->SetStaticByteField(cls, field, value); }
+    template <class T> jlong getLong(jobject parent, jmethodID method, T values...) {
+        return this->core->getEnv()->CallLongMethod(parent, method, values);
+    }
 
-    void setChar(jobject parent, jfieldID field, jchar value) { this->core->getEnv()->SetCharField(parent, field, value); }
-    void setChar(jfieldID field, jchar value) { this->core->getEnv()->SetStaticCharField(cls, field, value); }
+    template <class T> jlong getLong(jmethodID method, T values...) {
+        return this->core->getEnv()->CallStaticLongMethod(cls, method, values);
+    }
 
-    void setShort(jobject parent, jfieldID field, jshort value) { this->core->getEnv()->SetShortField(parent, field, value); }
-    void setShort(jfieldID field, jshort value) { this->core->getEnv()->SetStaticShortField(cls, field, value); }
+    jlong getLong(jobject parent, jmethodID method) {
+        return this->core->getEnv()->CallLongMethod(parent, method);
+    }
 
-    void setInt(jobject parent, jfieldID field, jint value) { this->core->getEnv()->SetIntField(parent, field, value); }
-    void setInt(jfieldID field, jint value) { this->core->getEnv()->SetStaticIntField(cls, field, value); }
+    jlong getLong(jmethodID method) {
+        return this->core->getEnv()->CallStaticLongMethod(cls, method);
+    }
 
-    void setLong(jobject parent, jfieldID field, jlong value) { this->core->getEnv()->SetLongField(parent, field, value); }
-    void setLong(jfieldID field, jlong value) { this->core->getEnv()->SetStaticLongField(cls, field, value); }
+    jlong getLong(jobject parent, jfieldID field) {
+        return this->core->getEnv()->GetLongField(parent, field);
+    }
 
-    void setFloat(jobject parent, jfieldID field, jfloat value) { this->core->getEnv()->SetFloatField(parent, field, value); }
-    void setFloat(jfieldID field, jfloat value) { this->core->getEnv()->SetStaticFloatField(cls, field, value); }
+    jlong getLong(jfieldID field) {
+        return this->core->getEnv()->GetStaticLongField(cls, field);
+    }
+
+    template <class T> jfloat getFloat(jobject parent, jmethodID method, T values...) {
+        return this->core->getEnv()->CallFloatMethod(parent, method, values);
+    }
+
+    template <class T> jfloat getFloat(jmethodID method, T values...) {
+        return this->core->getEnv()->CallStaticFloatMethod(cls, method, values);
+    }
+
+    jfloat getFloat(jobject parent, jmethodID method) {
+        return this->core->getEnv()->CallFloatMethod(parent, method);
+    }
+
+    jfloat getFloat(jmethodID method) {
+        return this->core->getEnv()->CallStaticFloatMethod(cls, method);
+    }
+
+    jfloat getFloat(jobject parent, jfieldID field) {
+        return this->core->getEnv()->GetFloatField(parent, field);
+    }
+
+    jfloat getFloat(jfieldID field) {
+        return this->core->getEnv()->GetStaticFloatField(cls, field);
+    }
+
+    template <class T> jdouble getDouble(jobject parent, jmethodID method, T values...) {
+        return this->core->getEnv()->CallDoubleMethod(parent, method, values);
+    }
+
+    template <class T> jdouble getDouble(jmethodID method, T values...) {
+        return this->core->getEnv()->CallStaticDoubleMethod(cls, method, values);
+    }
+
+    jdouble getDouble(jobject parent, jmethodID method) {
+        return this->core->getEnv()->CallDoubleMethod(parent, method);
+    }
+
+    jdouble getDouble(jmethodID method) {
+        return this->core->getEnv()->CallStaticDoubleMethod(cls, method);
+    }
+
+    jdouble getDouble(jobject parent, jfieldID field) {
+        return this->core->getEnv()->GetDoubleField(parent, field);
+    }
+
+    jdouble getDouble(jfieldID field) {
+        return this->core->getEnv()->GetStaticDoubleField(cls, field);
+    }
+
+    template <class T> jobject getObject(jobject parent, jmethodID method, T values...) {
+        return this->core->getEnv()->CallObjectMethod(parent, method, values);
+    }
+
+    template <class T> jobject getObject(jmethodID method, T values...) {
+        return this->core->getEnv()->CallStaticObjectMethod(cls, method, values);
+    }
+
+    jobject getObject(jobject parent, jmethodID method) {
+        return this->core->getEnv()->CallObjectMethod(parent, method);
+    }
+
+    jobject getObject(jmethodID method) {
+        return this->core->getEnv()->CallStaticObjectMethod(cls, method);
+    }
+
+    jobject getObject(jobject parent, jfieldID field) {
+        return this->core->getEnv()->GetObjectField(parent, field);
+    }
+
+    jobject getObject(jfieldID field) {
+        return this->core->getEnv()->GetStaticObjectField(cls, field);
+    }
+
+    void setBoolean(jobject parent, jfieldID field, jboolean value) {
+        this->core->getEnv()->SetBooleanField(parent, field, value);
+    }
+
+    void setBoolean(jfieldID field, jboolean value) {
+        this->core->getEnv()->SetStaticBooleanField(cls, field, value);
+    }
+
+    void setByte(jobject parent, jfieldID field, jbyte value) {
+        this->core->getEnv()->SetByteField(parent, field, value);
+    }
+
+    void setByte(jfieldID field, jbyte value) {
+        this->core->getEnv()->SetStaticByteField(cls, field, value);
+    }
+
+    void setChar(jobject parent, jfieldID field, jchar value) {
+        this->core->getEnv()->SetCharField(parent, field, value);
+    }
+
+    void setChar(jfieldID field, jchar value) {
+        this->core->getEnv()->SetStaticCharField(cls, field, value);
+    }
+
+    void setShort(jobject parent, jfieldID field, jshort value) {
+        this->core->getEnv()->SetShortField(parent, field, value);
+    }
+
+    void setShort(jfieldID field, jshort value) {
+        this->core->getEnv()->SetStaticShortField(cls, field, value);
+    }
+
+    void setInt(jobject parent, jfieldID field, jint value) {
+        this->core->getEnv()->SetIntField(parent, field, value);
+    }
+
+    void setInt(jfieldID field, jint value) {
+        this->core->getEnv()->SetStaticIntField(cls, field, value);
+    }
+
+    void setLong(jobject parent, jfieldID field, jlong value) {
+        this->core->getEnv()->SetLongField(parent, field, value);
+    }
+
+    void setLong(jfieldID field, jlong value) {
+        this->core->getEnv()->SetStaticLongField(cls, field, value);
+    }
+
+    void setFloat(jobject parent, jfieldID field, jfloat value) {
+        this->core->getEnv()->SetFloatField(parent, field, value);
+    }
+
+    void setFloat(jfieldID field, jfloat value) {
+        this->core->getEnv()->SetStaticFloatField(cls, field, value);
+    }
 
     void setDouble(jobject parent, jfieldID field, jdouble value) {
         this->core->getEnv()->SetDoubleField(parent, field, value);
