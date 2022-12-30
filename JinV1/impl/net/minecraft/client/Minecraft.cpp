@@ -17,31 +17,31 @@ jobject Minecraft::getMinecraft() {
     return getObject(GetMinecraft);
 }
 
-WorldClient* Minecraft::getWorld() {
+WorldClient Minecraft::getWorld() {
     jobject world = getObject(getMinecraft(), fdWorld);
     if (world == NULL) std::cout << "[Error] World is NULL!" << std::endl;
-    return new WorldClient(this->core, world);
+    return WorldClient(this->core, world);
 }
 
-EntityPlayerSP* Minecraft::getPlayer() {
+EntityPlayerSP Minecraft::getPlayer() {
     jobject player = getObject(getMinecraft(), fdPlayer);
     if (player == NULL) std::cout << "[Error] Player is NULL!" << std::endl;
-    return new EntityPlayerSP(this->core, player);
+    return EntityPlayerSP(this->core, player);
 }
 
-FontRenderer* Minecraft::getFontRenderer() {
+FontRenderer Minecraft::getFontRenderer() {
     jobject fontRenderer = getObject(getMinecraft(), fdFontRendererObj);
-    return new FontRenderer(this->core, fontRenderer);
+    return FontRenderer(this->core, fontRenderer);
 }
 
-GameSettings* Minecraft::getGameSettings() {
+GameSettings Minecraft::getGameSettings() {
     jobject gameSettings = getObject(getMinecraft(), fdGameSettings);
-    return new GameSettings(this->core, gameSettings);
+    return GameSettings(this->core, gameSettings);
 }
 
-MovingObjectPosition* Minecraft::getObjectMouseOver() {
+MovingObjectPosition Minecraft::getObjectMouseOver() {
     jobject objectPosition = getObject(getMinecraft(), fdObjectMouseOver);
-    return new MovingObjectPosition(this->core, objectPosition);
+    return MovingObjectPosition(this->core, objectPosition);
 }
 
 jobject Minecraft::getCurrentScreen() {

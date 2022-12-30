@@ -6,7 +6,7 @@ Chunk::Chunk(Core* core, jobject chunk) : ImplClass(core, "net.minecraft.world.c
     this->GetBlock = getMethodID("getBlock");
 }
 
-Block* Chunk::getBlock(jint x, jint y, jint z) {
+Block Chunk::getBlock(jint x, jint y, jint z) {
     jobject block = getObject(this->chunk, this->GetBlock, x, y, z);
-    return new Block(this->core, block);
+    return Block(this->core, block);
 }

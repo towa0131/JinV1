@@ -12,19 +12,19 @@ public:
 
     jobject getMinecraft();
 
-    WorldClient* getWorld();
+    WorldClient getWorld();
 
-    EntityPlayerSP* getPlayer();
+    EntityPlayerSP getPlayer();
 
-    FontRenderer* getFontRenderer();
+    FontRenderer getFontRenderer();
 
-    GameSettings* getGameSettings();
+    GameSettings getGameSettings();
 
     void setRightClickDelayTimer(jint);
 
     void setLeftClickCounter(jint);
 
-    MovingObjectPosition* getObjectMouseOver();
+    MovingObjectPosition getObjectMouseOver();
 
     jobject getCurrentScreen();
 

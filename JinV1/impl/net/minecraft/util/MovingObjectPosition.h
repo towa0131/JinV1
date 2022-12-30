@@ -6,7 +6,7 @@ class MovingObjectPosition : public ImplClass {
 public:
     MovingObjectPosition(Core* core, jobject objectPosition);
 
-    BlockPos* getBlockPos();
+    BlockPos getBlockPos();
 
     jobject getObjectPosition();
 

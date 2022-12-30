@@ -29,7 +29,7 @@ public:
 
     void swingItem();
 
-    InventoryPlayer* getInventory();
+    InventoryPlayer getInventory();
 
 private:
     jobject player;

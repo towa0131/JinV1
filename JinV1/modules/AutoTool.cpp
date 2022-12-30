@@ -48,8 +48,8 @@ AutoTool::AutoTool(Core *core, const char* name, int key, boolean state) : Modul
 
 void AutoTool::onUpdate() {
     if (GetAsyncKeyState(VK_LBUTTON) && this->mc->getCurrentScreen() == NULL) {
-        MovingObjectPosition* mouseOver = this->mc->getObjectMouseOver();
-        if (mouseOver->getObjectPosition() != NULL) {
+        MovingObjectPosition mouseOver = this->mc->getObjectMouseOver();
+        if (mouseOver.getObjectPosition() != NULL) {
             jclass cls = ImplClass(this->getCore(), "net.minecraft.util.MovingObjectPosition").getClass("net.minecraft.util.MovingObjectPosition");
             jclass enum_cls = ImplClass(this->getCore(), "net.minecraft.util.MovingObjectPosition$MovingObjectType").getClass("net.minecraft.util.MovingObjectPosition$MovingObjectType");
             jmethodID equals_method = this->getCore()->getEnv()->GetMethodID(enum_cls, "equals", "(Ljava/lang/Object;)Z");
@@ -58,21 +58,18 @@ void AutoTool::onUpdate() {
             jfieldID entity_field = this->getCore()->getEnv()->GetStaticFieldID(enum_cls, "ENTITY", "Lnet/minecraft/util/MovingObjectPosition$MovingObjectType;");
             jobject entity_object = this->getCore()->getEnv()->GetStaticObjectField(enum_cls, entity_field);
             jfieldID typeOfHit = this->getCore()->getEnv()->GetFieldID(cls, "field_72313_a", "Lnet/minecraft/util/MovingObjectPosition$MovingObjectType;");
-            jobject res = this->getCore()->getEnv()->GetObjectField(mouseOver->getObjectPosition(), typeOfHit);
+            jobject res = this->getCore()->getEnv()->GetObjectField(mouseOver.getObjectPosition(), typeOfHit);
             if (res != NULL) {
                 if (this->getCore()->getEnv()->CallBooleanMethod(block_object, equals_method, res) == JNI_TRUE && !this->locked) {
                     this->locked = true;
-                    BlockPos* pos = mouseOver->getBlockPos();
-                    Vector3 vec = pos->getVector3();
-                    if (pos->getBlockPos() != NULL) {
-                        Chunk* chunk = this->mc->getWorld()->getChunkFromChunkCoords((int)vec.getX() >> 4, (int)vec.getZ() >> 4);
-                        Block* block = chunk->getBlock(vec.getX(), vec.getY(), vec.getZ());
-                        int blockId = block->getId();
-                        jobject material = block->getMaterial();
+                    BlockPos pos = mouseOver.getBlockPos();
+                    Vector3 vec = pos.getVector3();
+                    if (pos.getBlockPos() != NULL) {
+                        Chunk chunk = this->mc->getWorld().getChunkFromChunkCoords((int)vec.getX() >> 4, (int)vec.getZ() >> 4);
+                        Block block = chunk.getBlock(vec.getX(), vec.getY(), vec.getZ());
+                        int blockId = block.getId();
+                        jobject material = block.getMaterial();
                         jclass materialClass = ImplClass(this->getCore(), "net.minecraft.block.material.Material").getClass("net.minecraft.block.material.Material");
-
-                        delete chunk;
-                        delete block;
 
                         for (const auto& mp : this->materialMap) {
                             jfieldID targetMaterialField = this->getCore()->getEnv()->GetStaticFieldID(materialClass, mp.first, "Lnet/minecraft/block/material/Material;");
@@ -83,7 +80,7 @@ void AutoTool::onUpdate() {
                                 clock_t end = clock();
                                 printf("[Debug] time : %0.8f\n", ((float)end - start) / CLOCKS_PER_SEC);
                                 if (index != -1) {
-                                    this->mc->getPlayer()->getInventory()->setCurrentItem(index);
+                                    this->mc->getPlayer().getInventory().setCurrentItem(index);
                                     this->locked = false;
                                     break;
                                 }
@@ -94,7 +91,7 @@ void AutoTool::onUpdate() {
                         if (blockId == 35) {
                             int index = this->getIndex(Tool::Shears);
                             if (index != -1) {
-                                this->mc->getPlayer()->getInventory()->setCurrentItem(index);
+                                this->mc->getPlayer().getInventory().setCurrentItem(index);
                             }
                         }
                     }
@@ -102,33 +99,27 @@ void AutoTool::onUpdate() {
                 } else if (this->getCore()->getEnv()->CallBooleanMethod(entity_object, equals_method, res) == JNI_TRUE) {
                     int index = this->getIndex(Tool::Sword);
                     if (index != -1) {
-                        this->mc->getPlayer()->getInventory()->setCurrentItem(index);
+                        this->mc->getPlayer().getInventory().setCurrentItem(index);
                     }
                 }
             }
-
-            delete mouseOver;
         }
     }
 }
 
 int AutoTool::getIndex(Tool tool) {
-    InventoryPlayer* inv = this->mc->getPlayer()->getInventory();
+    InventoryPlayer inv = this->mc->getPlayer().getInventory();
     for (const auto& mp : this->toolMap) {
         for (int i = 0; i < 9; i++) {
-            ItemStack* itemstack = inv->getItemStack(i);
-            if (itemstack != NULL) {
-                int id = itemstack->getItem()->getId();
+            ItemStack itemstack = inv.getItemStack(i);
+            if (!itemstack.isNull()) {
+                int id = itemstack.getItem().getId();
                 if (mp.first == id && mp.second == tool) {
-                    delete itemstack;
                     return i;
                 }
             }
-            delete itemstack;
         }
     }
-
-    delete inv;
 
     return -1;
 }

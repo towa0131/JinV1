@@ -13,10 +13,10 @@ Dolphin::Dolphin(Core* core, const char* name, int key, boolean state) : Module(
 }
 
 void Dolphin::onUpdate() {
-    EntityPlayerSP* player = this->mc->getPlayer();
+    EntityPlayerSP player = this->mc->getPlayer();
 
-    if (player->isInWater()) {
-        Vector3 motion = player->getMotion();
+    if (player.isInWater()) {
+        Vector3 motion = player.getMotion();
         if (((GetAsyncKeyState('W') & 0xff00) != 0) ||
             ((GetAsyncKeyState('A') & 0xff00) != 0) ||
             ((GetAsyncKeyState('S') & 0xff00) != 0) ||
@@ -31,8 +31,6 @@ void Dolphin::onUpdate() {
             }
         }
         motion.add(Vector3(0, 0.01, 0));
-        player->setMotion(motion);
+        player.setMotion(motion);
     }
-
-    delete player;
 }

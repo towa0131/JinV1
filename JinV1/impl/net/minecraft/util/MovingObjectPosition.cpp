@@ -6,9 +6,9 @@ MovingObjectPosition::MovingObjectPosition(Core* core, jobject objectPosition) :
     this->fdBlockPos = getFieldID("blockPos");
 }
 
-BlockPos* MovingObjectPosition::getBlockPos() {
+BlockPos MovingObjectPosition::getBlockPos() {
     jobject blockPos = getObject(this->objectPosition, this->fdBlockPos);
-    return new BlockPos(this->core, blockPos);
+    return BlockPos(this->core, blockPos);
 }
 
 jobject MovingObjectPosition::getObjectPosition() {

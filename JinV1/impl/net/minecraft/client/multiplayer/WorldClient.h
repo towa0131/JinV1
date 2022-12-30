@@ -8,13 +8,13 @@ class WorldClient : public ImplClass {
 public:
     WorldClient(Core* core, jobject worldClient);
 
-    BlockState* getBlockState(jobject pos);
+    BlockState getBlockState(jobject pos);
 
     jlong getWorldTime();
 
     jboolean isValid(BlockPos* pos);
 
-    Chunk* getChunkFromChunkCoords(jint chunkX, jint chunkZ);
+    Chunk getChunkFromChunkCoords(jint chunkX, jint chunkZ);
 
 private:
     jobject worldClient;

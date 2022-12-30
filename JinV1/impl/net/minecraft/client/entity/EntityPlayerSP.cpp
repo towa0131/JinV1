@@ -74,7 +74,7 @@ jfloat EntityPlayerSP::getMoveForward() {
     return getFloat(this->player, this->fdMoveForward);
 }
 
-InventoryPlayer* EntityPlayerSP::getInventory() {
+InventoryPlayer EntityPlayerSP::getInventory() {
     jobject inventory = getObject(this->player, fdInventory);
-    return new InventoryPlayer(this->core, inventory);
+    return InventoryPlayer(this->core, inventory);
 }

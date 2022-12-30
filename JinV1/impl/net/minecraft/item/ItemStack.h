@@ -6,9 +6,11 @@ class ItemStack : public ImplClass {
 public:
     ItemStack(Core* core, jobject itemstack);
 
-    Item* getItem();
+    Item getItem();
 
     jint getStackSize();
+
+    boolean isNull();
 
 private:
     jobject itemstack;

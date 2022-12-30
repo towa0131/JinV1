@@ -11,9 +11,8 @@ void InventoryPlayer::setCurrentItem(jint currentItem) {
     setInt(this->inventory, fdCurrentItem, currentItem);
 }
 
-ItemStack* InventoryPlayer::getItemStack(jint index) {
+ItemStack InventoryPlayer::getItemStack(jint index) {
     jobject mainInventory = getObject(this->inventory, this->fdMainInventory);
     jobject itemstack = this->core->getEnv()->GetObjectArrayElement((jobjectArray)mainInventory, index);
-    if (itemstack == NULL) return NULL;
-    else return new ItemStack(this->core, itemstack);
+    return ItemStack(this->core, itemstack);
 }

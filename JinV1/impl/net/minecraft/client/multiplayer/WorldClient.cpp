@@ -9,10 +9,10 @@ WorldClient::WorldClient(Core* core, jobject worldClient) : ImplClass(core, "net
     this->GetChunkFromChunkCoords = getMethodID("getChunkFromChunkCoords");
 }
 
-BlockState* WorldClient::getBlockState(jobject pos) {
+BlockState WorldClient::getBlockState(jobject pos) {
     jobject blockState = getObject(this->worldClient, this->GetBlockState, pos);
     if (blockState == NULL) std::cout << "blockstate is null" << std::endl;
-    return new BlockState(this->core, blockState);
+    return BlockState(this->core, blockState);
 }
 
 jlong WorldClient::getWorldTime() {
@@ -23,7 +23,7 @@ jboolean WorldClient::isValid(BlockPos* pos) {
     return getBoolean(this->worldClient, this->IsValid, pos->getBlockPos());
 }
 
-Chunk* WorldClient::getChunkFromChunkCoords(jint chunkX, jint chunkZ) {
+Chunk WorldClient::getChunkFromChunkCoords(jint chunkX, jint chunkZ) {
     jobject chunk = getObject(this->worldClient, this->GetChunkFromChunkCoords, chunkX, chunkZ);
-    return new Chunk(this->core, chunk);
+    return Chunk(this->core, chunk);
 }

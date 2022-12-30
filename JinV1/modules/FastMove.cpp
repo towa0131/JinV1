@@ -19,12 +19,12 @@ FastMove::FastMove(Core *core, const char* name, int key, boolean state) : Modul
 }
 
 void FastMove::onUpdate() {
-    EntityPlayerSP* player = this->mc->getPlayer();
+    EntityPlayerSP player = this->mc->getPlayer();
     double x = 0;
     double y = 0;
     double z = 0;
-    Vector3 vec3 = player->getVector3();
-    float yaw = player->getYaw();
+    Vector3 vec3 = player.getVector3();
+    float yaw = player.getYaw();
 
     if ((GetAsyncKeyState('W') & 0xff00) != 0) {
         x += -sin(degToRad(yaw)) * this->speed;
@@ -54,7 +54,5 @@ void FastMove::onUpdate() {
         y -= this->speed;
     }
 
-    player->setMotion(Vector3(x, y, z));
-
-    delete player;
+    player.setMotion(Vector3(x, y, z));
 }

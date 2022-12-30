@@ -8,7 +8,7 @@ public:
 
     void setCurrentItem(jint currentItem);
 
-    ItemStack* getItemStack(jint index);
+    ItemStack getItemStack(jint index);
 
 private:
     jobject inventory;

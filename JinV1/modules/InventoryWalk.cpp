@@ -8,11 +8,11 @@ InventoryWalk::InventoryWalk(Core* core, const char* name, int key) : InventoryW
 
 InventoryWalk::InventoryWalk(Core *core, const char* name, int key, boolean state) : Module(core, name, ModuleId::MODULE_INVENTORY_WALK, key, state) {
     this->mc = new Minecraft(this->getCore());
-    this->keys['W'] = this->mc->getGameSettings()->getKeyBindForward();
-    this->keys['S'] = mc->getGameSettings()->getKeyBindBack();
-    this->keys['D'] = mc->getGameSettings()->getKeyBindRight();
-    this->keys['A'] = mc->getGameSettings()->getKeyBindLeft();
-    this->keys[VK_SPACE] = mc->getGameSettings()->getKeyBindJump();
+    this->keys['W'] = this->mc->getGameSettings().getKeyBindForward();
+    this->keys['S'] = this->mc->getGameSettings().getKeyBindBack();
+    this->keys['D'] = this->mc->getGameSettings().getKeyBindRight();
+    this->keys['A'] = this->mc->getGameSettings().getKeyBindLeft();
+    this->keys[VK_SPACE] = this->mc->getGameSettings().getKeyBindJump();
 }
 
 void InventoryWalk::onUpdate() {

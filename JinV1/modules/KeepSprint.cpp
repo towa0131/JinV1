@@ -12,14 +12,13 @@ KeepSprint::KeepSprint(Core* core, const char* name, int key, boolean state) : M
 }
 
 void KeepSprint::onUpdate() {
-    EntityPlayerSP* player = this->mc->getPlayer();
+    EntityPlayerSP player = this->mc->getPlayer();
 
-    Vector3 vec = player->getVector3();
+    Vector3 vec = player.getVector3();
 
-    if (player->getMoveForward() > 0.0) {
-        player->setSprinting(true);
+    if (player.getMoveForward() > 0.0) {
+        player.setSprinting(true);
     } else {
-        player->setSprinting(false);
+        player.setSprinting(false);
     }
-    delete player;
 }
