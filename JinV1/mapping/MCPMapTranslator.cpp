@@ -6,6 +6,7 @@ MCPMapTranslator::MCPMapTranslator() {
     this->registerMethod("func_71410_x", "getMinecraft", "()Lnet/minecraft/client/Minecraft;");
     this->registerField("field_71467_ac", "rightClickDelayTimer", "I");
     this->registerField("field_71429_W", "leftClickCounter", "I");
+    this->registerField("field_71441_e", "theWorld", "Lnet/minecraft/client/multiplayer/WorldClient;");
     this->registerField("field_71439_g", "thePlayer", "Lnet/minecraft/client/entity/EntityPlayerSP;");
     this->registerField("field_71466_p", "fontRendererObj", "Lnet/minecraft/client/gui/FontRenderer;");
     this->registerField("field_71476_x", "objectMouseOver", "Lnet/minecraft/util/MovingObjectPosition;");
@@ -23,6 +24,7 @@ MCPMapTranslator::MCPMapTranslator() {
     this->registerField("field_70128_L", "isDead", "Z");
     this->registerField("field_70122_E", "onGround", "Z");
     this->registerField("field_70701_bs", "moveForward", "F");
+    this->registerField("field_71071_by", "inventory", "Lnet/minecraft/entity/player/InventoryPlayer;");
     this->registerMethod("func_70031_b", "setSprinting", "(Z)V");
     this->registerMethod("func_71038_i", "swingItem", "()V");
     this->registerMethod("func_70090_H", "isInWater", "()Z");
@@ -40,5 +42,31 @@ MCPMapTranslator::MCPMapTranslator() {
     this->registerMethod("func_151463_i", "getKeyCode", "()I");
     this->registerMethod("func_74510_a", "setKeyBindState", "(IZ)V");
     this->registerField("field_74513_e", "pressed", "Z");
+    this->registerClass("net.minecraft.entity.player.InventoryPlayer", "net.minecraft.entity.player.InventoryPlayer");
+    this->registerField("field_70461_c", "currentItem", "I");
+    this->registerField("field_70462_a", "mainInventory", "[Lnet/minecraft/item/ItemStack;");
+    this->registerClass("net.minecraft.item.ItemStack", "net.minecraft.item.ItemStack");
+    this->registerField("field_77994_a", "stackSize", "I");
+    this->registerField("field_151002_e", "item", "Lnet/minecraft/item/Item;");
+    this->registerClass("net.minecraft.item.Item", "net.minecraft.item.Item");
+    this->registerMethod("func_150891_b", "getIdFromItem", "(Lnet/minecraft/item/Item;)I");
     this->registerClass("net.minecraft.util.MovingObjectPosition", "net.minecraft.util.MovingObjectPosition");
+    this->registerField("field_178783_e", "blockPos", "Lnet/minecraft/util/BlockPos;");
+    this->registerClass("net.minecraft.util.BlockPos", "net.minecraft.util.BlockPos");
+    this->registerField("field_177962_a", "x", "I");
+    this->registerField("field_177960_b", "y", "I");
+    this->registerField("field_177961_c", "z", "I");
+    this->registerClass("net.minecraft.client.multiplayer.WorldClient", "net.minecraft.client.multiplayer.WorldClient");
+    this->registerMethod("func_180495_p", "getBlockState", "(Lnet/minecraft/util/BlockPos;)Lnet/minecraft/block/state/IBlockState;");
+    this->registerMethod("func_72820_D", "getWorldTime", "()J");
+    this->registerMethod("func_175701_a", "isValid", "(Lnet/minecraft/util/BlockPos;)Z");
+    this->registerMethod("func_72964_e", "getChunkFromChunkCoords", "(II)Lnet/minecraft/world/chunk/Chunk;");
+    this->registerClass("net.minecraft.block.state.BlockState", "net.minecraft.block.state.BlockState");
+    // this->registerMethod("func_177622_c", "getBlock", "()Lnet/minecraft/block/Block;");
+    this->registerClass("net.minecraft.block.Block", "net.minecraft.block.Block");
+    this->registerMethod("func_149682_b", "getIdFromBlock", "(Lnet/minecraft/block/Block;)I");
+    this->registerField("field_149770_b", "unlocalizedName", "Ljava/lang/String;");
+    this->registerMethod("func_149688_o", "getMaterial", "()Lnet/minecraft/block/material/Material;");
+    this->registerClass("net.minecraft.world.chunk.Chunk", "net.minecraft.world.chunk.Chunk");
+    this->registerMethod("func_177438_a", "getBlock", "(III)Lnet/minecraft/block/Block;");
 }

@@ -1,6 +1,7 @@
 #pragma once
 #include "../../../../ImplClass.h"
 #include "../../../../../utils/Vector3.h"
+#include "../../entity/player/InventoryPlayer.h"
 
 class EntityPlayerSP : public ImplClass {
 public:
@@ -28,6 +29,8 @@ public:
 
     void swingItem();
 
+    InventoryPlayer* getInventory();
+
 private:
     jobject player;
     jfieldID fdPosX;
@@ -41,6 +44,7 @@ private:
     jfieldID fdIsDead;
     jfieldID fdOnGround;
     jfieldID fdMoveForward;
+    jfieldID fdInventory;
     jmethodID fdSetSprinting;
     jmethodID fdSwingItem;
     jmethodID fdIsInWater;

@@ -12,5 +12,4 @@ public:
 
 private:
     Minecraft* mc;
-    EntityPlayerSP* player;
 };

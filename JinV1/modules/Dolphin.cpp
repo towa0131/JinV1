@@ -9,15 +9,14 @@ Dolphin::Dolphin(Core* core, const char* name, int key) : Dolphin(core, name, ke
 
 Dolphin::Dolphin(Core* core, const char* name, int key, boolean state) : Module(core, name, ModuleId::MODULE_DOLPHIN, key, state) {
     this->mc = new Minecraft(this->getCore());
-    this->player = this->mc->getPlayer();
     this->speed = 1.01;
 }
 
 void Dolphin::onUpdate() {
-    if (this->player->isDead()) this->player = this->mc->getPlayer();
+    EntityPlayerSP* player = this->mc->getPlayer();
 
-    if (this->player->isInWater()) {
-        Vector3 motion = this->player->getMotion();
+    if (player->isInWater()) {
+        Vector3 motion = player->getMotion();
         if (((GetAsyncKeyState('W') & 0xff00) != 0) ||
             ((GetAsyncKeyState('A') & 0xff00) != 0) ||
             ((GetAsyncKeyState('S') & 0xff00) != 0) ||
@@ -32,6 +31,8 @@ void Dolphin::onUpdate() {
             }
         }
         motion.add(Vector3(0, 0.01, 0));
-        this->player->setMotion(motion);
+        player->setMotion(motion);
     }
+
+    delete player;
 }

@@ -3,6 +3,7 @@
 #include <cmath>
 #include "Core.h"
 #include "modules/AutoClicker.h"
+#include "modules/AutoTool.h"
 #include "modules/InventoryWalk.h"
 #include "modules/ModuleManager.h"
 #include "modules/FastPlace.h"
@@ -34,7 +35,8 @@ void Core::run() {
     this->getModuleManager()->registerModule(new InventoryWalk(this, "InventoryWalk", 'I', false));
     this->getModuleManager()->registerModule(new Speed(this, "Speed", 'N', false));
     this->getModuleManager()->registerModule(new FastMove(this, "FastMove", 'M', false));
-    this->getModuleManager()->registerModule(new Dolphin(this, "Dolphin ", 'D', false));
+    this->getModuleManager()->registerModule(new Dolphin(this, "Dolphin", 'D', false));
+    this->getModuleManager()->registerModule(new AutoTool(this, "AutoTool", 'A', false));
 
     //if (!glfwInit()) {
     //    std::cout << "glfw initialize failed!" << std::endl;
@@ -62,12 +64,11 @@ void Core::run() {
     //ImGui_ImplOpenGL3_Init(glsl_version);
 
      Minecraft* mc = new Minecraft(this);
-     EntityPlayerSP* player = mc->getPlayer();
 
     //float x, y;
 
     while (this->running) {
-        this->getModuleManager()->update();
+        if (mc->isInWorld()) this->getModuleManager()->update();
 
         //ImGui_ImplOpenGL3_NewFrame();
         //ImGui_ImplGlfw_NewFrame();

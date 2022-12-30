@@ -15,7 +15,7 @@ public:
             std::cout << "[Error] Class Not Found : " << className << std::endl;
         }
         else {
-            std::cout << "[Debug] Class : " << className << std::endl;
+            // std::cout << "[Debug] Class : " << className << std::endl;
         }
     }
 

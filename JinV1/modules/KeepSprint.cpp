@@ -9,17 +9,17 @@ KeepSprint::KeepSprint(Core* core, const char* name, int key) : KeepSprint(core,
 
 KeepSprint::KeepSprint(Core* core, const char* name, int key, boolean state) : Module(core, name, ModuleId::MODULE_KEEPSPRINT, key, state) {
     this->mc = new Minecraft(core);
-    this->player = this->mc->getPlayer();
 }
 
 void KeepSprint::onUpdate() {
-    if (this->player->isDead()) this->player = this->mc->getPlayer();
+    EntityPlayerSP* player = this->mc->getPlayer();
 
-    Vector3 vec = this->player->getVector3();
+    Vector3 vec = player->getVector3();
 
-    if (this->player->getMoveForward() > 0.0) {
-        this->player->setSprinting(true);
+    if (player->getMoveForward() > 0.0) {
+        player->setSprinting(true);
     } else {
-        this->player->setSprinting(false);
+        player->setSprinting(false);
     }
+    delete player;
 }

@@ -4,6 +4,7 @@
 void ModuleManager::registerModule(Module *m) {
     this->modules.push_back(m);
     std::cout << "[Debug] Module Registered: " << m->getName() << std::endl;
+    this->lastUpdate = GetTickCount();
 }
 
 boolean ModuleManager::activate(ModuleId id) {
@@ -27,6 +28,8 @@ boolean ModuleManager::deactivate(ModuleId id) {
 }
 
 void ModuleManager::update() {
+    std::cout << "updated module : " << (GetTickCount() - this->lastUpdate) << std::endl;
+    this->lastUpdate = GetTickCount();
     for (Module *m : this->modules) {
         m->keyCheck();
         if (m->getState()) m->onUpdate();

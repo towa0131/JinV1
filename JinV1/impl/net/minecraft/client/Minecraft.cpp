@@ -5,6 +5,7 @@ Minecraft::Minecraft(Core* core) : ImplClass(core, "net.minecraft.client.Minecra
     GetMinecraft = getStaticMethodID("getMinecraft");
     fdRightClickDelayTimer = getFieldID("rightClickDelayTimer");
     fdLeftClickCounter = getFieldID("leftClickCounter");
+    fdWorld = getFieldID("theWorld");
     fdPlayer = getFieldID("thePlayer");
     fdFontRendererObj = getFieldID("fontRendererObj");
     fdObjectMouseOver = getFieldID("objectMouseOver");
@@ -14,6 +15,12 @@ Minecraft::Minecraft(Core* core) : ImplClass(core, "net.minecraft.client.Minecra
 
 jobject Minecraft::getMinecraft() {
     return getObject(GetMinecraft);
+}
+
+WorldClient* Minecraft::getWorld() {
+    jobject world = getObject(getMinecraft(), fdWorld);
+    if (world == NULL) std::cout << "[Error] World is NULL!" << std::endl;
+    return new WorldClient(this->core, world);
 }
 
 EntityPlayerSP* Minecraft::getPlayer() {
@@ -32,8 +39,9 @@ GameSettings* Minecraft::getGameSettings() {
     return new GameSettings(this->core, gameSettings);
 }
 
-jobject Minecraft::getObjectMouseOver() {
-    return getObject(getMinecraft(), fdObjectMouseOver);
+MovingObjectPosition* Minecraft::getObjectMouseOver() {
+    jobject objectPosition = getObject(getMinecraft(), fdObjectMouseOver);
+    return new MovingObjectPosition(this->core, objectPosition);
 }
 
 jobject Minecraft::getCurrentScreen() {
@@ -46,4 +54,10 @@ void Minecraft::setRightClickDelayTimer(jint rightClickDelayTimer) {
 
 void Minecraft::setLeftClickCounter(jint leftClickCounter) {
     setInt(getMinecraft(), fdLeftClickCounter, leftClickCounter);
+}
+
+bool Minecraft::isInWorld() {
+    jobject world = getObject(getMinecraft(), fdWorld);
+    jobject player = getObject(getMinecraft(), fdPlayer);
+    return world != NULL && player != NULL;
 }

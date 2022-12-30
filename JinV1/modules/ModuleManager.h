@@ -17,4 +17,6 @@ private:
     std::vector<Module*> modules;
 
     std::set<ModuleId> activatedModuleId;
+
+    time_t lastUpdate;
 };

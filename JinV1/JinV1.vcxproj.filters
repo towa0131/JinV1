@@ -91,6 +91,48 @@
     <Filter Include="ヘッダー ファイル\impl\com/moonsworth/lunar/bridge/">
       <UniqueIdentifier>{6e1c37e8-f5e7-47ba-af4d-0d75259aced8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\impl\net/minecraft/entity/player/">
+      <UniqueIdentifier>{b89ec5fd-a723-4049-8a0a-94cc15a3c016}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\impl\net/minecraft/entity/player/">
+      <UniqueIdentifier>{1d53fceb-c709-44cd-8c61-a105ed711ccc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\impl\net/minecraft/item/">
+      <UniqueIdentifier>{dbe42f7f-5d05-47be-9361-1edc7eada661}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\impl\net/minecraft/item/">
+      <UniqueIdentifier>{b10c48b6-031e-4875-87b1-23b78264af1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\impl\net/minecraft/client/multiplayer/">
+      <UniqueIdentifier>{1b09acd0-0180-4e8e-9b8b-f06eb7dc81ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\impl\net/minecraft/client/multiplayer/">
+      <UniqueIdentifier>{ea9b0e71-5449-4fa8-9263-b0f11207deca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\impl\net/minecraft/util/">
+      <UniqueIdentifier>{46c24b53-11c8-4a8a-8d9c-bc15759d4798}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\impl\net/minecraft/util/">
+      <UniqueIdentifier>{6edd1715-f67f-481d-9736-d040e84188f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\impl\net/minecraft/block/state/">
+      <UniqueIdentifier>{2c3bbc18-7ce9-4aef-b8fe-7219c94a6d9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\impl\net/minecraft/block/state/">
+      <UniqueIdentifier>{b9cad4e9-0eee-426c-98ba-85994cf5c245}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\impl\net/minecraft/block/">
+      <UniqueIdentifier>{e2e7f746-3ec6-4054-821b-8e8e706b23ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\impl\net/minecraft/block/">
+      <UniqueIdentifier>{ca1fe7a5-8927-4e3f-84da-2e8f0170a8cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\impl\net/minecraft/world/chunk/">
+      <UniqueIdentifier>{3800677d-c6b3-4d14-aebf-c23e26950540}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\impl\net/minecraft/world/chunk/">
+      <UniqueIdentifier>{4d651fac-1b3b-4915-aaba-e6b9e049bae5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="JNI\classfile_constants.h">
@@ -231,6 +273,36 @@
     <ClInclude Include="modules\Dolphin.h">
       <Filter>ヘッダー ファイル\modules</Filter>
     </ClInclude>
+    <ClInclude Include="impl\net\minecraft\entity\player\InventoryPlayer.h">
+      <Filter>ヘッダー ファイル\impl\net/minecraft/entity/player/</Filter>
+    </ClInclude>
+    <ClInclude Include="impl\net\minecraft\item\ItemStack.h">
+      <Filter>ヘッダー ファイル\impl\net/minecraft/item/</Filter>
+    </ClInclude>
+    <ClInclude Include="impl\net\minecraft\item\Item.h">
+      <Filter>ヘッダー ファイル\impl\net/minecraft/item/</Filter>
+    </ClInclude>
+    <ClInclude Include="impl\net\minecraft\util\MovingObjectPosition.h">
+      <Filter>ヘッダー ファイル\impl\net/minecraft/util/</Filter>
+    </ClInclude>
+    <ClInclude Include="impl\net\minecraft\util\BlockPos.h">
+      <Filter>ヘッダー ファイル\impl\net/minecraft/util/</Filter>
+    </ClInclude>
+    <ClInclude Include="impl\net\minecraft\client\multiplayer\WorldClient.h">
+      <Filter>ヘッダー ファイル\impl\net/minecraft/client/multiplayer/</Filter>
+    </ClInclude>
+    <ClInclude Include="impl\net\minecraft\block\state\BlockState.h">
+      <Filter>ヘッダー ファイル\impl\net/minecraft/block/state/</Filter>
+    </ClInclude>
+    <ClInclude Include="impl\net\minecraft\block\Block.h">
+      <Filter>ヘッダー ファイル\impl\net/minecraft/block/</Filter>
+    </ClInclude>
+    <ClInclude Include="impl\net\minecraft\world\chunk\Chunk.h">
+      <Filter>ヘッダー ファイル\impl\net/minecraft/world/chunk/</Filter>
+    </ClInclude>
+    <ClInclude Include="modules\AutoTool.h">
+      <Filter>ヘッダー ファイル\modules</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -327,6 +399,36 @@
       <Filter>ソース ファイル\impl\com/moonsworth/lunar/bridge/</Filter>
     </ClCompile>
     <ClCompile Include="modules\Dolphin.cpp">
+      <Filter>ソース ファイル\modules</Filter>
+    </ClCompile>
+    <ClCompile Include="impl\net\minecraft\entity\player\InventoryPlayer.cpp">
+      <Filter>ソース ファイル\impl\net/minecraft/entity/player/</Filter>
+    </ClCompile>
+    <ClCompile Include="impl\net\minecraft\item\ItemStack.cpp">
+      <Filter>ソース ファイル\impl\net/minecraft/item/</Filter>
+    </ClCompile>
+    <ClCompile Include="impl\net\minecraft\item\Item.cpp">
+      <Filter>ソース ファイル\impl\net/minecraft/item/</Filter>
+    </ClCompile>
+    <ClCompile Include="impl\net\minecraft\util\MovingObjectPosition.cpp">
+      <Filter>ソース ファイル\impl\net/minecraft/util/</Filter>
+    </ClCompile>
+    <ClCompile Include="impl\net\minecraft\util\BlockPos.cpp">
+      <Filter>ソース ファイル\impl\net/minecraft/util/</Filter>
+    </ClCompile>
+    <ClCompile Include="impl\net\minecraft\client\multiplayer\WorldClient.cpp">
+      <Filter>ソース ファイル\impl\net/minecraft/client/multiplayer/</Filter>
+    </ClCompile>
+    <ClCompile Include="impl\net\minecraft\block\state\BlockState.cpp">
+      <Filter>ソース ファイル\impl\net/minecraft/block/state/</Filter>
+    </ClCompile>
+    <ClCompile Include="impl\net\minecraft\block\Block.cpp">
+      <Filter>ソース ファイル\impl\net/minecraft/block/</Filter>
+    </ClCompile>
+    <ClCompile Include="impl\net\minecraft\world\chunk\Chunk.cpp">
+      <Filter>ソース ファイル\impl\net/minecraft/world/chunk/</Filter>
+    </ClCompile>
+    <ClCompile Include="modules\AutoTool.cpp">
       <Filter>ソース ファイル\modules</Filter>
     </ClCompile>
   </ItemGroup>

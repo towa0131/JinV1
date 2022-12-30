@@ -13,7 +13,5 @@ public:
 private:
     Minecraft* mc;
 
-    EntityPlayerSP* player;
-
     double speed;
 };

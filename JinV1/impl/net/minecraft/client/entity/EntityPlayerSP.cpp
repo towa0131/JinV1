@@ -14,6 +14,7 @@ EntityPlayerSP::EntityPlayerSP(Core* core, jobject player) : ImplClass(core, "ne
     this->fdIsDead = getFieldID("isDead");
     this->fdOnGround = getFieldID("onGround");
     this->fdMoveForward = getFieldID("moveForward");
+    this->fdInventory = getFieldID("inventory");
     this->fdSetSprinting = getMethodID("setSprinting");
     this->fdSwingItem = getMethodID("swingItem");
     this->fdIsInWater = getMethodID("isInWater");
@@ -71,4 +72,9 @@ Vector3 EntityPlayerSP::getMotion() {
 
 jfloat EntityPlayerSP::getMoveForward() {
     return getFloat(this->player, this->fdMoveForward);
+}
+
+InventoryPlayer* EntityPlayerSP::getInventory() {
+    jobject inventory = getObject(this->player, fdInventory);
+    return new InventoryPlayer(this->core, inventory);
 }
